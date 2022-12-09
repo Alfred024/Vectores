@@ -4,9 +4,6 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
-    //Problema 1: La clase representa un vector (nuestro TDA), y dentro de él existen los métodos para realizar las operaciones
-    //sobre dicho vector, es esta la forma correcta de hacer nuestro programa??
-
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -20,21 +17,21 @@ public class Vector {
         size = 2;
     }
 
-    String sumaVectores(Vector v2){
+    Vector sumaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = v2.i + Vector.this.i;
         res.j = v2.j + Vector.this.j;
         res.k = v2.k + Vector.this.k;
-        return "< "+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
+        return res;
     }
 
     //El orden de los vectores sí afecta el resultado final
-    String restaVectores(Vector v2){
+    Vector restaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = Vector.this.i - v2.i;
         res.j = Vector.this.j - v2.j;
         res.k = Vector.this.k - v2.k;
-        return "< "+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
+        return res;
     }
 
     /*Revisar este método porque no da bien el resultado*/
@@ -43,7 +40,6 @@ public class Vector {
         double resProductoVectores;
         vectorProducto.i *=v2.i;
         vectorProducto.j *=v2.j;
-
 
         if(v2.size == 2){
             resProductoVectores = vectorProducto.i + vectorProducto.j;
@@ -54,8 +50,7 @@ public class Vector {
         return resProductoVectores;
     }
 
-    //Un método que calculará el determinante exacto para hacer más operaciones adelante, como calcular el vector unitario
-    double determinanteVector(){
+    double magnitudVector(){
         Vector vector = new Vector(i,j,k);
         if(vector.size == 2){
             return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2));
@@ -64,8 +59,12 @@ public class Vector {
         }
     }
 
-    //Sólo imprime el determinante, por lo que imprimiremos un número redondeado de forma que sea visualmente más cómodo
-    void determinanteVector(Vector vector, int numDecimales){
+    double magnitudVector(Vector vectorAB){
+
+        return  0;
+    }
+
+    /*void determinanteVector(Vector vector, int numDecimales){
         String res="";
         double resNum;
         if(vector.size == 2){
@@ -81,8 +80,7 @@ public class Vector {
             res= "√"+((int)resNum)+"";
         }
         System.out.println("Determinante: "+res);
-    }
-
+    }*/
 
     //Si tiene más de 4 ceros a partir del punto decimal, consideraremos como que no tiene decimales
     boolean tieneDecimales(double num){

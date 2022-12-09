@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
         Vector vector = new Vector(xNum, yNum, zNum);
         return vector;
     }
+    boolean vectorVacio(Vector vector){
+        return vector.i == 0 && vector.j == 0 && vector.k == 0;
+    }
 
     public void calcularButton(View view){
         Vector vector1 = getVectorA();
@@ -72,23 +75,37 @@ public class MainActivity extends AppCompatActivity {
         if(multiRB.isChecked() == true){
             multiplicaion(vector1, vector2);
         }
+        if(magnitudRB.isChecked() == true){
+            magnitudVector(vector1, vector2);
+        }
     }
 
     public void suma(Vector v1, Vector v2){
-        String resSuma = v1.sumaVectores(v2);
+        Vector resultante = v1.sumaVectores(v2);
+        String resSuma = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
         resView.setText(resSuma);
     }
     public void resta(Vector v1, Vector v2){
-        String resResta = v1.restaVectores(v2);
+        Vector resultante = v1.restaVectores(v2);
+        String resResta = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
         resView.setText(resResta);
     }
     public void multiplicaion(Vector v1, Vector v2){
         String resMulti = v1.multiVector(v2)+"";
         resView.setText(resMulti);
     }
-    public void magnitudVector(View view){
-        Vector vector = getVectorA();
-        double magnitud = vector.determinanteVector();
+    public void magnitudVector(Vector v1, Vector v2){
+        double magnitud=0;
+        if(vectorVacio(v1) && !vectorVacio(v2)){
+            magnitud = v2.magnitudVector();
+        }
+        if(vectorVacio(v2) && !vectorVacio(v1)){
+            magnitud = v1.magnitudVector();
+        }
+        if(!vectorVacio(v1) && !vectorVacio(v2)){
+            Vector vectorAB = v1.restaVectores(v2);
+            magnitud = vectorAB.magnitudVector();
+        }
         String resText = magnitud+"";
         resView.setText(resText);
     }
