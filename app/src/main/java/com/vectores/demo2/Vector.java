@@ -37,6 +37,21 @@ public class Vector {
         return res;
     }
 
+    double multiVector(Vector v2){
+        Vector vectorProducto = new Vector(i,j,j);
+        double resProductoVectores;
+        vectorProducto.i *=v2.i;
+        vectorProducto.j *=v2.j;
+
+        if(v2.size == 2){
+            resProductoVectores = vectorProducto.i + vectorProducto.j;
+        }else{
+            vectorProducto.k *=v2.k;
+            resProductoVectores = vectorProducto.i + vectorProducto.j+vectorProducto.k;
+        }
+        return resProductoVectores;
+    }
+
     //Un método que claculará el determinante exacto para hacer más operaciones adelante, como calcular el vector unitario
     double determinanteVector(Vector vector){
         if(vector.size == 2){
