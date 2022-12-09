@@ -1,17 +1,22 @@
 package com.vectores.demo2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText x,y,z;
+    private EditText x,y,z,x2,y2,z2;
     private TextView resView;
+    private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
+    
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,26 +25,73 @@ public class MainActivity extends AppCompatActivity {
         x = (EditText)findViewById(R.id.ejeX);
         y = (EditText)findViewById(R.id.ejeY);
         z = (EditText)findViewById(R.id.ejeZ);
+        x2 = (EditText)findViewById(R.id.ejeX2);
+        y2 = (EditText)findViewById(R.id.ejeY2);
+        z2 = (EditText)findViewById(R.id.ejeZ2);
+
+        sumaRB = (RadioButton)findViewById(R.id.suma);
+        restaRB = (RadioButton)findViewById(R.id.resta);
+        multiRB = (RadioButton)findViewById(R.id.multi);
+        magnitudRB = (RadioButton)findViewById(R.id.magnitud);
 
         resView = (TextView)findViewById(R.id.txt_res);
     }
 
-    /*El método está creado, pero es necesario indicarle que se ejecute*/
+    Vector getVectorA(){
+        String xA = x.getText().toString();
+        String yA = y.getText().toString();
+        String zA = z.getText().toString();
+
+        int xNum = Integer.parseInt(xA);
+        int yNum = Integer.parseInt(yA);
+        int zNum = Integer.parseInt(zA);
+        Vector vector = new Vector(xNum, yNum, zNum);
+        return vector;
+    }
+    Vector getVectorB(){
+        String xB = x2.getText().toString();
+        String yB = y2.getText().toString();
+        String zB = z2.getText().toString();
+
+        int xNum = Integer.parseInt(xB);
+        int yNum = Integer.parseInt(yB);
+        int zNum = Integer.parseInt(zB);
+        Vector vector = new Vector(xNum, yNum, zNum);
+        return vector;
+    }
+
+    public void calcularButton(View view){
+        Vector vector1 = getVectorA();
+        Vector vector2 = getVectorB();
+        if(sumaRB.isChecked() == true){
+            suma(vector1, vector2);
+        }
+        if(restaRB.isChecked() == true){
+            resta(vector1, vector2);
+        }
+        if(multiRB.isChecked() == true){
+            multiplicaion(vector1, vector2);
+        }
+    }
+
+    public void suma(Vector v1, Vector v2){
+        String resSuma = v1.sumaVectores(v2);
+        resView.setText(resSuma);
+    }
+    public void resta(Vector v1, Vector v2){
+        String resResta = v1.restaVectores(v2);
+        resView.setText(resResta);
+    }
+    public void multiplicaion(Vector v1, Vector v2){
+        String resMulti = v1.multiVector(v2)+"";
+        resView.setText(resMulti);
+    }
     public void magnitudVector(View view){
-        String x1 = x.getText().toString();
-        String y1 = y.getText().toString();
-        String z1 = z.getText().toString();
-
-        int xNum = Integer.parseInt(x1);
-        int yNum = Integer.parseInt(y1);
-        int zNum = Integer.parseInt(z1);
-
-        Vector v1 = new Vector(xNum, yNum, zNum);
-        double magnitud = v1.determinanteVector();
+        Vector vector = getVectorA();
+        double magnitud = vector.determinanteVector();
         String resText = magnitud+"";
         resView.setText(resText);
     }
-
 }
 
 

@@ -20,28 +20,30 @@ public class Vector {
         size = 2;
     }
 
-    Vector sumaVectores(Vector v2){
+    String sumaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = v2.i + Vector.this.i;
         res.j = v2.j + Vector.this.j;
         res.k = v2.k + Vector.this.k;
-        return res;
+        return "< "+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
     }
 
     //El orden de los vectores sí afecta el resultado final
-    Vector restaVectores(Vector v2){
+    String restaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = Vector.this.i - v2.i;
         res.j = Vector.this.j - v2.j;
         res.k = Vector.this.k - v2.k;
-        return res;
+        return "< "+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
     }
 
+    /*Revisar este método porque no da bien el resultado*/
     double multiVector(Vector v2){
         Vector vectorProducto = new Vector(i,j,j);
         double resProductoVectores;
         vectorProducto.i *=v2.i;
         vectorProducto.j *=v2.j;
+
 
         if(v2.size == 2){
             resProductoVectores = vectorProducto.i + vectorProducto.j;
@@ -52,7 +54,7 @@ public class Vector {
         return resProductoVectores;
     }
 
-    //Un método que claculará el determinante exacto para hacer más operaciones adelante, como calcular el vector unitario
+    //Un método que calculará el determinante exacto para hacer más operaciones adelante, como calcular el vector unitario
     double determinanteVector(){
         Vector vector = new Vector(i,j,k);
         if(vector.size == 2){
