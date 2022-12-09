@@ -6,70 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/ejeY"
-        android:layout_width="76dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="28dp"
-        android:ems="10"
-        android:hint="j"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeZ"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toEndOf="@+id/ejeX"
-        tools:layout_editor_absoluteY="172dp" />
-
-    <EditText
-        android:id="@+id/ejeZ"
-        android:layout_width="76dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="36dp"
-        android:ems="10"
-        android:hint="k"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ejeX"
         android:layout_width="76dp"
         android:layout_height="57dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="336dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="i"
+        android:hint="@string/i"
         android:inputType="number"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ejeZ"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Magnitud"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="252dp"
         android:onClick="magnitudVector"
-        android:text="Magnitud"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:text="@string/calcular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="258dp" />
+        tools:ignore="UsingOnClickInXml" />
+
+    <EditText
+        android:id="@+id/ejeY"
+        android:layout_width="76dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="119dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="336dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/j"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ejeZ" />
+
+    <EditText
+        android:id="@+id/ejeZ"
+        android:layout_width="76dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="336dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/k"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_res"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Resultado"
+        android:layout_marginBottom="436dp"
+        android:text=""
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="357dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="548dp"
+        android:text="@string/calcular_la_magnitud_del_vector"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="516dp"
+        android:text="@string/ingrese_el_valor_de_los_componentes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
