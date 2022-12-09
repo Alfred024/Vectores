@@ -3,7 +3,13 @@
     <string name="j">j</string>
     <string name="k">k</string>
     <string name="i">i</string>
+    <string name="j2">j2</string>
+    <string name="k2">k2</string>
+    <string name="i2">i2</string>
+    <string name="vector1">Vector A</string>
+    <string name="vector2">Vector B</string>
     <string name="calcular">Calcular</string>
     <string name="calcular_la_magnitud_del_vector">Calcular la magnitud del vector</string>
     <string name="ingrese_el_valor_de_los_componentes">Ingrese el valor de los componentes</string>
+    <string name="txt_res">Resultado</string>
 </resources>
