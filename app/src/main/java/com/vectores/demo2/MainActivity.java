@@ -12,16 +12,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private EditText x,y,z,x2,y2,z2;
-    private TextView resView;
+    private TextView resView, operationView;
     private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
     
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         x = (EditText)findViewById(R.id.ejeX);
         y = (EditText)findViewById(R.id.ejeY);
         z = (EditText)findViewById(R.id.ejeZ);
@@ -35,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         magnitudRB = (RadioButton)findViewById(R.id.magnitud);
 
         resView = (TextView)findViewById(R.id.txt_res);
+        operationView = (TextView)findViewById(R.id.operationLabel);
     }
 
     Vector getVectorA(){
@@ -67,15 +66,19 @@ public class MainActivity extends AppCompatActivity {
         Vector vector1 = getVectorA();
         Vector vector2 = getVectorB();
         if(sumaRB.isChecked() == true){
+            operationView.setText("Suma de vectores A+B");
             suma(vector1, vector2);
         }
         if(restaRB.isChecked() == true){
+            operationView.setText("Resta de vectores A-B");
             resta(vector1, vector2);
         }
         if(multiRB.isChecked() == true){
+            operationView.setText("Multiplicación de vectores A*B");
             multiplicaion(vector1, vector2);
         }
         if(magnitudRB.isChecked() == true){
+            operationView.setText("Magnitud de vector AB");
             magnitudVector(vector1, vector2);
         }
     }
@@ -96,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void magnitudVector(Vector v1, Vector v2){
         double magnitud=0;
-        if(vectorVacio(v1) && !vectorVacio(v2)){
+        /*if(vectorVacio(v1) && !vectorVacio(v2)){
             magnitud = v2.magnitudVector();
         }
         if(vectorVacio(v2) && !vectorVacio(v1)){
             magnitud = v1.magnitudVector();
-        }
+        }*/
         if(!vectorVacio(v1) && !vectorVacio(v2)){
             Vector vectorAB = v1.restaVectores(v2);
             magnitud = vectorAB.magnitudVector();

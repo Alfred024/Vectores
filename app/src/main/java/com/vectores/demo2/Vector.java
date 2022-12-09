@@ -4,6 +4,8 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
+    /*El vector debe tener la posibilidad de */
+
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -34,19 +36,14 @@ public class Vector {
         return res;
     }
 
-    /*Revisar este método porque no da bien el resultado*/
     double multiVector(Vector v2){
-        Vector vectorProducto = new Vector(i,j,j);
+        Vector res = new Vector(0,0,0);
         double resProductoVectores;
-        vectorProducto.i *=v2.i;
-        vectorProducto.j *=v2.j;
+        res.i = Vector.this.i * v2.i;
+        res.j = Vector.this.j * v2.j;
+        res.k = Vector.this.k * v2.k;
 
-        if(v2.size == 2){
-            resProductoVectores = vectorProducto.i + vectorProducto.j;
-        }else{
-            vectorProducto.k *=v2.k;
-            resProductoVectores = vectorProducto.i + vectorProducto.j+vectorProducto.k;
-        }
+        resProductoVectores = res.i + res.j + res.k;
         return resProductoVectores;
     }
 
@@ -59,10 +56,6 @@ public class Vector {
         }
     }
 
-    double magnitudVector(Vector vectorAB){
-
-        return  0;
-    }
 
     /*void determinanteVector(Vector vector, int numDecimales){
         String res="";
