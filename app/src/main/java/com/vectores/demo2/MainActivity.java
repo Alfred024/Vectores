@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         int zNum = Integer.parseInt(z1);
 
         Vector v1 = new Vector(xNum, yNum, zNum);
-        double magnitud = v1.determinanteVector(v1);
+        double magnitud = v1.determinanteVector();
         String resText = magnitud+"";
         resView.setText(resText);
     }

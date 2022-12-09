@@ -53,7 +53,8 @@ public class Vector {
     }
 
     //Un método que claculará el determinante exacto para hacer más operaciones adelante, como calcular el vector unitario
-    double determinanteVector(Vector vector){
+    double determinanteVector(){
+        Vector vector = new Vector(i,j,k);
         if(vector.size == 2){
             return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2));
         }else{
