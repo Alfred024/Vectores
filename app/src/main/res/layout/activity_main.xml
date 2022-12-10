@@ -8,40 +8,11 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/vector2_Label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/vector2"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeX2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vector1_Label" />
-
-    <EditText
-        android:id="@+id/ejeX2"
-        android:layout_width="76dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="44dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/i2"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#78909C"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeY2"
-        app:layout_constraintTop_toBottomOf="@+id/ejeX" />
-
     <EditText
         android:id="@+id/ejeZ2"
-        android:layout_width="76dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="63dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="4dp"
         android:autofillHints=""
         android:ems="10"
@@ -50,25 +21,9 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColorHint="#78909C"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ejeZ" />
-
-    <EditText
-        android:id="@+id/ejeY2"
-        android:layout_width="76dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="44dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/j2"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#78909C"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeZ2"
-        app:layout_constraintTop_toBottomOf="@+id/ejeY" />
 
     <Button
         android:id="@+id/button"
@@ -76,7 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
         android:layout_marginTop="24dp"
+        android:backgroundTint="#873D94"
         android:onClick="calcularButton"
+        android:rotationY="0"
         android:text="@string/calcular"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,42 +41,10 @@
         tools:ignore="UsingOnClickInXml" />
 
     <EditText
-        android:id="@+id/ejeY"
-        android:layout_width="73dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="64dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/j"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#78909C"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeZ"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/ejeX"
-        android:layout_width="71dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="64dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/i"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColorHint="#78909C"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/ejeY"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
         android:id="@+id/ejeZ"
         android:layout_width="66dp"
         android:layout_height="55dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="4dp"
         android:autofillHints=""
         android:ems="10"
@@ -128,7 +53,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColorHint="#78909C"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -137,78 +62,133 @@
         android:id="@+id/operationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="@string/calcular_la_magnitud_del_vector"
         android:textSize="25sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ejeX2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="80dp"
         android:text="@string/ingrese_el_valor_de_los_componentes"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operationLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ejeX2"
+        android:layout_width="70dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/i2"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ejeY2"
+        app:layout_constraintTop_toBottomOf="@+id/ejeX" />
 
     <TextView
         android:id="@+id/vector1_Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="40dp"
         android:text="@string/vector1"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="229dp"
-        android:layout_height="221dp"
+    <TextView
+        android:id="@+id/vector2_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/vector2"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ejeX2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vector2_Label">
+        app:layout_constraintTop_toBottomOf="@+id/vector1_Label" />
 
-        <RadioButton
-            android:id="@+id/suma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/radioButton1" />
+    <EditText
+        android:id="@+id/ejeY"
+        android:layout_width="73dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/j"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ejeZ"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <RadioButton
-            android:id="@+id/resta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/radioButton2" />
+    <EditText
+        android:id="@+id/ejeX"
+        android:layout_width="71dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/i"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ejeY"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <RadioButton
-            android:id="@+id/multi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/radioButton3" />
-
-        <RadioButton
-            android:id="@+id/magnitud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/radioButton4" />
-    </RadioGroup>
+    <EditText
+        android:id="@+id/ejeY2"
+        android:layout_width="74dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/j2"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/ejeZ2"
+        app:layout_constraintTop_toBottomOf="@+id/ejeY" />
 
     <TextView
         android:id="@+id/txt_res"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="56dp"
         android:text="@string/txt_res"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/mainSpinner" />
+
+    <Spinner
+        android:id="@+id/mainSpinner"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:background="#873D94"
+        android:contentDescription="@android:string/yes"
+        android:touchscreenBlocksFocus="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operationLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

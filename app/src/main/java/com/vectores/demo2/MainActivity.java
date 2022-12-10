@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText x,y,z,x2,y2,z2;
     private TextView resView, operationView;
     private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
-    
+    private Spinner spinner1;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +30,18 @@ public class MainActivity extends AppCompatActivity {
         y2 = (EditText)findViewById(R.id.ejeY2);
         z2 = (EditText)findViewById(R.id.ejeZ2);
 
-        sumaRB = (RadioButton)findViewById(R.id.suma);
+        /*sumaRB = (RadioButton)findViewById(R.id.suma);
         restaRB = (RadioButton)findViewById(R.id.resta);
         multiRB = (RadioButton)findViewById(R.id.multi);
-        magnitudRB = (RadioButton)findViewById(R.id.magnitud);
+        magnitudRB = (RadioButton)findViewById(R.id.magnitud);*/
 
         resView = (TextView)findViewById(R.id.txt_res);
         operationView = (TextView)findViewById(R.id.operationLabel);
+
+        spinner1 = (Spinner)findViewById(R.id.mainSpinner);
+        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, operaciones);
+        spinner1.setAdapter(adapter);
     }
 
     Vector getVectorA(){
@@ -65,7 +73,26 @@ public class MainActivity extends AppCompatActivity {
     public void calcularButton(View view){
         Vector vector1 = getVectorA();
         Vector vector2 = getVectorB();
-        if(sumaRB.isChecked() == true){
+        String operacion = spinner1.getSelectedItem().toString();
+
+        if(operacion.equals("Suma")){
+            operationView.setText("Suma de vectores A+B");
+            suma(vector1, vector2);
+        }
+        if(operacion.equals("Resta")){
+            operationView.setText("Resta de vectores A-B");
+            resta(vector1, vector2);
+        }
+        if(operacion.equals("Multiplicación")){
+            operationView.setText("Multiplicación de vectores A*B");
+            multiplicaion(vector1, vector2);
+        }
+        if(operacion.equals("Magnitud")){
+            operationView.setText("Magnitud de vector AB");
+            magnitudVector(vector1, vector2);
+        }
+
+        /*if(sumaRB.isChecked() == true){
             operationView.setText("Suma de vectores A+B");
             suma(vector1, vector2);
         }
@@ -80,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         if(magnitudRB.isChecked() == true){
             operationView.setText("Magnitud de vector AB");
             magnitudVector(vector1, vector2);
-        }
+        }*/
     }
 
     public void suma(Vector v1, Vector v2){
