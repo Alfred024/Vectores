@@ -4,8 +4,6 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
-    /*El vector debe tener la posibilidad de */
-
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -54,6 +52,14 @@ public class Vector {
         }else{
             return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2) + Math.pow(vector.k,2));
         }
+    }
+
+    Vector productoVectorial(Vector v2){
+        Vector res = new Vector(0,0,0);
+        res.i = (Vector.this.j*v2.k) - (Vector.this.k*v2.j);
+        res.j = (Vector.this.i*v2.k) - (Vector.this.k*v2.i);
+        res.k = (Vector.this.i*v2.j) - (Vector.this.j*v2.i);
+        return  res;
     }
 
     /*void determinanteVector(Vector vector, int numDecimales){

@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText x,y,z,x2,y2,z2;
     private TextView resView, operationView;
-    //private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
     private Spinner spinner1;
 
     @SuppressLint("MissingInflatedId")
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud"};
+        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud","Producto vectorial"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
@@ -86,23 +85,11 @@ public class MainActivity extends AppCompatActivity {
             operationView.setText("Magnitud de vector AB");
             magnitudVector(vector1, vector2);
         }
+        if(operacion.equals("Producto vectorial")){
+            operationView.setText("Producto vectorial A*B");
+            productoVectorial(vector1, vector2);
+        }
 
-        /*if(sumaRB.isChecked() == true){
-            operationView.setText("Suma de vectores A+B");
-            suma(vector1, vector2);
-        }
-        if(restaRB.isChecked() == true){
-            operationView.setText("Resta de vectores A-B");
-            resta(vector1, vector2);
-        }
-        if(multiRB.isChecked() == true){
-            operationView.setText("Multiplicación de vectores A*B");
-            multiplicaion(vector1, vector2);
-        }
-        if(magnitudRB.isChecked() == true){
-            operationView.setText("Magnitud de vector AB");
-            magnitudVector(vector1, vector2);
-        }*/
     }
 
     public void suma(Vector v1, Vector v2){
@@ -133,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
         }
         String resText = magnitud+"";
         resView.setText(resText);
+    }
+    public void productoVectorial(Vector v1, Vector v2){
+        Vector resultante = v1.productoVectorial(v2);
+        String resResta = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
+        resView.setText(resResta);
     }
 }
 
