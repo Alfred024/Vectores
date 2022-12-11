@@ -62,6 +62,11 @@ public class Vector {
         return  res;
     }
 
+    double areaParalelogramo(Vector v2){
+        Vector vectorProducto = productoVectorial(v2);
+        double areaVector = vectorProducto.magnitudVector();
+        return areaVector;
+    }
     /*void determinanteVector(Vector vector, int numDecimales){
         String res="";
         double resNum;

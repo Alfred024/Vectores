@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud","Producto vectorial"};
+        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud","Producto vectorial","Área sobre vectores A B"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
             operationView.setText("Producto vectorial A*B");
             productoVectorial(vector1, vector2);
         }
+        if(operacion.equals("Área sobre vectores A B")){
+            operationView.setText("Área sobre vectores A B");
+            areaEntreVectores(vector1, vector2);
+        }
 
     }
 
@@ -125,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
         Vector resultante = v1.productoVectorial(v2);
         String resResta = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
         resView.setText(resResta);
+    }
+    public void areaEntreVectores(Vector v1, Vector v2){
+        double area = 0;
+        area = v1.areaParalelogramo(v2);
+        String resText = area+"";
+        resView.setText(resText);
     }
 }
 
