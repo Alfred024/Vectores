@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText x,y,z,x2,y2,z2;
     private TextView resView, operationView;
-    private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
+    //private RadioButton sumaRB, restaRB, multiRB, magnitudRB;
     private Spinner spinner1;
 
     @SuppressLint("MissingInflatedId")
@@ -30,17 +30,12 @@ public class MainActivity extends AppCompatActivity {
         y2 = (EditText)findViewById(R.id.ejeY2);
         z2 = (EditText)findViewById(R.id.ejeZ2);
 
-        /*sumaRB = (RadioButton)findViewById(R.id.suma);
-        restaRB = (RadioButton)findViewById(R.id.resta);
-        multiRB = (RadioButton)findViewById(R.id.multi);
-        magnitudRB = (RadioButton)findViewById(R.id.magnitud);*/
-
         resView = (TextView)findViewById(R.id.txt_res);
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
         String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, operaciones);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
 

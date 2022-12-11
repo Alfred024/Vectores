@@ -56,7 +56,6 @@ public class Vector {
         }
     }
 
-
     /*void determinanteVector(Vector vector, int numDecimales){
         String res="";
         double resNum;
