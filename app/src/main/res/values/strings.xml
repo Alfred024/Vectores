@@ -12,11 +12,9 @@
     <string name="calcular_la_magnitud_del_vector">Elija la operación a realizar</string>
     <string name="ingrese_el_valor_de_los_componentes">Ingrese el valor de los componentes</string>
     <string name="txt_res">Resultado</string>
+    <string name="changeActivity_B">Ver procedimiento</string>
 
-    /*Buttons section*/
-    <string name="radioButton1">Suma</string>
-    <string name="radioButton2">Resta</string>
-    <string name="radioButton3">Multiplicación</string>
-    <string name="radioButton4">Magnitud</string>
+    /*Segunda activity*/
+    <string name="return_button">Regresar</string>
 
 </resources>

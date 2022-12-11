@@ -3,6 +3,7 @@ package com.vectores.demo2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
-
+    public void changeActivity(View view){
+        Intent nextActivity = new Intent(this, proceduresActivity.class);
+        startActivity(nextActivity);
+    }
     Vector getVectorA(){
         String xA = x.getText().toString();
         String yA = y.getText().toString();
