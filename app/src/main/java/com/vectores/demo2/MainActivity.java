@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(operacion.equals("Multiplicación")){
             signoOperacion = "·";
-            //res = v1.multiVector(v2); --> Arreglarlo para que devuelva un vector y no un double
+            res = v1.multiVector(v2);
         }
 
         String procedimiento = v1.getProcedimiento(v2, res, signoOperacion);
@@ -134,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
         resView.setText(resResta);
     }
     public void multiplicaion(Vector v1, Vector v2){
-        String resMulti = v1.multiVector(v2)+"";
+        Vector resultante = v1.multiVector(v2);
+        String resMulti = (resultante.i+resultante.j+resultante.k)+"";
         resView.setText(resMulti);
     }
     public void magnitudVector(Vector v1, Vector v2){

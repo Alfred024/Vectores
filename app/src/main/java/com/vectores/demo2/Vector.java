@@ -38,8 +38,6 @@ public class Vector {
         return res;
     }
 
-
-
     //El orden de los vectores sí afecta el resultado final
     Vector restaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
@@ -49,15 +47,13 @@ public class Vector {
         return res;
     }
 
-    double multiVector(Vector v2){
+    Vector multiVector(Vector v2){
         Vector res = new Vector(0,0,0);
-        double resProductoVectores;
         res.i = Vector.this.i * v2.i;
         res.j = Vector.this.j * v2.j;
         res.k = Vector.this.k * v2.k;
 
-        resProductoVectores = res.i + res.j + res.k;
-        return resProductoVectores;
+        return res;
     }
 
     double magnitudVector(){
