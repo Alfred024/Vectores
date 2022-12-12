@@ -4,9 +4,6 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
-    /*Y si en lugar de hacer que cada componente del vector lo obtenga de un output, hacemos que el vector sea declarado en una
-    * sola línea, con un String, y se vayan escogiendo los componentes de uno a uno*/
-
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -14,13 +11,12 @@ public class Vector {
         size = 3;
     }
 
-    public Vector(int i, int j) {
+    /*public Vector(int i, int j) {
         this.i = i;
         this.j = j;
         size = 2;
-    }
+    }*/
 
-    /*EL de resta no puede ser el mismo que el de suma porque cambia el orden en que se resta*/
     String getProcedimiento(Vector v2, Vector res, String operacion){
         String procedimiento = "(";
         procedimiento+= Vector.this.i+"i"+operacion+v2.i+"i), (";
@@ -78,33 +74,6 @@ public class Vector {
         double areaVector = vectorProducto.magnitudVector();
         return areaVector;
     }
-    /*void determinanteVector(Vector vector, int numDecimales){
-        String res="";
-        double resNum;
-        if(vector.size == 2){
-            resNum = Math.pow(vector.i,2) + Math.pow(vector.j,2);
-        }else{
-            resNum = Math.pow(vector.i,2) + Math.pow(vector.j,2)+ Math.pow(vector.k,2);
-        }
-
-        if(tieneDecimales(resNum)){
-            resNum = Math.sqrt(resNum);
-            res= (int)resNum+"";
-        }else{
-            res= "√"+((int)resNum)+"";
-        }
-        System.out.println("Determinante: "+res);
-    }*/
-    /*boolean tieneDecimales(double num){
-        int index=0;
-        String numCadena = num+"";
-        do{
-            index++;
-        }while(numCadena.charAt(index) != '.');
-        index++;
-
-        return numCadena.length()-index != 1;
-    }*/
 
     String showRes(Vector vectorResultante){
         return "< "+vectorResultante.i+"i, "+vectorResultante.j+"j, "+vectorResultante.k+"k >";

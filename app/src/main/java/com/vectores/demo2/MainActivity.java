@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     private EditText x,y,z,x2,y2,z2;
     private TextView resView, operationView;
     private Spinner spinner1;
@@ -66,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         Vector vector = new Vector(xNum, yNum, zNum);
         return vector;
     }
-    boolean vectorVacio(Vector vector){
-        return vector.i == 0 && vector.j == 0 && vector.k == 0;
+    boolean vectorVacio(EditText x, EditText y, EditText z){
+        return x.getText().toString().isEmpty() && y.getText().toString().isEmpty() && z.getText().toString().isEmpty();
     }
 
     public void calcularButton(View view){
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(operacion.equals("Magnitud")){
             operationView.setText("Magnitud de vector AB");
-            magnitudVector(vector1, vector2);
+            magnitud(vector1, vector2);
         }
         if(operacion.equals("Producto vectorial")){
             operationView.setText("Producto vectorial A*B");
@@ -117,7 +116,15 @@ public class MainActivity extends AppCompatActivity {
             signoOperacion = "·";
             res = v1.multiVector(v2);
         }
+        if(operacion.equals("Magnitud")){
 
+        }
+        if(operacion.equals("Producto vectorial")){
+
+        }
+        if(operacion.equals("Área sobre vectores A B")){
+
+        }
         String procedimiento = v1.getProcedimiento(v2, res, signoOperacion);
         return procedimiento;
     }
@@ -138,15 +145,15 @@ public class MainActivity extends AppCompatActivity {
         String resMulti = (resultante.i+resultante.j+resultante.k)+"";
         resView.setText(resMulti);
     }
-    public void magnitudVector(Vector v1, Vector v2){
+    public void magnitud(Vector v1, Vector v2){
         double magnitud=0;
-        /*if(vectorVacio(v1) && !vectorVacio(v2)){
+        /*if(vectorVacio(x,y,z) && !vectorVacio(x2,y2,z2)){
             magnitud = v2.magnitudVector();
         }
-        if(vectorVacio(v2) && !vectorVacio(v1)){
+        if(!vectorVacio(x,y,z) && vectorVacio(x2,y2,z2)){
             magnitud = v1.magnitudVector();
         }*/
-        if(!vectorVacio(v1) && !vectorVacio(v2)){
+        if(!vectorVacio(x,y,z) && !vectorVacio(x2,y2,z2)){
             Vector vectorAB = v1.restaVectores(v2);
             magnitud = vectorAB.magnitudVector();
         }
@@ -165,72 +172,3 @@ public class MainActivity extends AppCompatActivity {
         resView.setText(resText);
     }
 }
-
-
-/*
-* Toast: Notificación emergente que aparecerá en la pantalla/activity
-* que se está ejecutando sin bloquear las funciones de la app, por lo que
-* la pantalla que se está ejecutando permanecerá activa.
-*
-* El Toast no acepta interacción, por lo que al tocarlo no sucederá
-* nada.
-*
-* Estructura de un Toast para generar notificación emergente:
-*   (Context contexto, String mensaje, int duración).show();
-* el contexto hace referencia a la clase donde se mostrará el
-* activity
-* */
-
-//Métodos que se ejecutan al momento de crear una app
-/*
-    Método que crea la actividad a ejecutar (viene por default)
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-}
-    Toast: Enseña un mensaje mediante una capa
-
-    Existe un método intermedio "onRestart" el cual ejecutará la aplicación pausada ("onPause")
-
-    @Override
-    Iniciará aquella actividad que creó el método onCr eate
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
-        // La actividad está a punto de hacerse visible.
-    }
-
-    @Override
-    Permitirá visualizar el activity
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
-        // La actividad se ha vuelto visible (ahora se "reanuda").
-    }
-
-    //Hasta este pnuto, el actuvity se está ejecutando
-
-    @Override
-    Se ejecuta cuando se pasa el activity a segundo plano, como cuando sales de la app
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show();
-        // Enfocarse en otra actividad  (esta actividad est� a punto de ser "detenida").
-    }
-
-    @Override
-    //Oculatará el activity
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show();
-        // La actividad ya no es visible (ahora est� "detenida")
-    }
-
-    @Override
-    //Se ejecuta cuando la app se cierra
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show();
-        // La actividad est� a punto de ser destruida.
-    }
-*/
