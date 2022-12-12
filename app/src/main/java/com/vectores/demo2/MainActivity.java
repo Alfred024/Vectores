@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeActivity(View view){
+        String operacion = spinner1.getSelectedItem().toString();
         Intent nextActivity = new Intent(this, proceduresActivity.class);
-        nextActivity.putExtra("key",procedimientoButton(getVectorA(), getVectorB()));
+        nextActivity.putExtra("key",getProcedimientoView(getVectorA(), getVectorB(), operacion));
         startActivity(nextActivity);
     }
     Vector getVectorA(){
@@ -100,9 +101,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public String procedimientoButton(Vector v1, Vector v2){
-        Vector res = v1.sumaVectores(v2);
-        String procedimiento = v1.getProcedimiento(v2, res);
+
+    public String getProcedimientoView(Vector v1, Vector v2, String operacion){
+        String signoOperacion="";
+        Vector res = null;
+        if(operacion.equals("Suma")){
+            signoOperacion = "+";
+            res = v1.sumaVectores(v2);
+        }
+        if(operacion.equals("Resta")){
+            signoOperacion = "-";
+            res = v1.restaVectores(v2);
+        }
+        if(operacion.equals("Multiplicación")){
+            signoOperacion = "·";
+            //res = v1.multiVector(v2); --> Arreglarlo para que devuelva un vector y no un double
+        }
+
+        String procedimiento = v1.getProcedimiento(v2, res, signoOperacion);
         return procedimiento;
     }
 

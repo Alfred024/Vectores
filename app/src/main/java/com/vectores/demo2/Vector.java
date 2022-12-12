@@ -20,6 +20,16 @@ public class Vector {
         size = 2;
     }
 
+    /*EL de resta no puede ser el mismo que el de suma porque cambia el orden en que se resta*/
+    String getProcedimiento(Vector v2, Vector res, String operacion){
+        String procedimiento = "(";
+        procedimiento+= Vector.this.i+"i"+operacion+v2.i+"i), (";
+        procedimiento+= Vector.this.j+"j "+operacion+ v2.j+"j), (";
+        procedimiento+= Vector.this.k+"k "+operacion+ v2.k+"k) = ";
+        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
+        return procedimiento;
+    }
+
     Vector sumaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = v2.i + Vector.this.i;
@@ -27,16 +37,8 @@ public class Vector {
         res.k = v2.k + Vector.this.k;
         return res;
     }
-    /*El código funcionará para suma, resta y multiplicación siempre y  cuando le vayamso cambiando el signo en
-    * cada operación*/
-    String getProcedimiento(Vector v2, Vector res){
-        String procedimiento = "(";
-        procedimiento+= v2.i+"i +"+ Vector.this.i+"i), (";
-        procedimiento+= v2.j+"j +"+ Vector.this.j+"j), (";
-        procedimiento+= v2.k+"k +"+ Vector.this.k+"k) = ";
-        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
-        return procedimiento;
-    }
+
+
 
     //El orden de los vectores sí afecta el resultado final
     Vector restaVectores(Vector v2){
