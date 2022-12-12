@@ -11,9 +11,24 @@
         android:layout_width="181dp"
         android:layout_height="77dp"
         android:layout_marginStart="112dp"
-        android:layout_marginBottom="264dp"
+        android:layout_marginBottom="168dp"
+        android:autoText="false"
+        android:background="#9C27B0"
+        android:backgroundTint="#9C27B0"
+        android:backgroundTintMode="add"
         android:onClick="backToMain"
         android:text="@string/return_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/title_Procedures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:text="@string/title_Label"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

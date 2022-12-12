@@ -4,6 +4,9 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
+    /*Y si en lugar de hacer que cada componente del vector lo obtenga de un output, hacemos que el vector sea declarado en una
+    * sola línea, con un String, y se vayan escogiendo los componentes de uno a uno*/
+
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -23,6 +26,16 @@ public class Vector {
         res.j = v2.j + Vector.this.j;
         res.k = v2.k + Vector.this.k;
         return res;
+    }
+    /*El código funcionará para suma, resta y multiplicación siempre y  cuando le vayamso cambiando el signo en
+    * cada operación*/
+    String getProcedimiento(Vector v2, Vector res){
+        String procedimiento = "(";
+        procedimiento+= v2.i+"i +"+ Vector.this.i+"i), (";
+        procedimiento+= v2.j+"j +"+ Vector.this.j+"j), (";
+        procedimiento+= v2.k+"k +"+ Vector.this.k+"k) = ";
+        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
+        return procedimiento;
     }
 
     //El orden de los vectores sí afecta el resultado final
@@ -84,9 +97,7 @@ public class Vector {
         }
         System.out.println("Determinante: "+res);
     }*/
-
-    //Si tiene más de 4 ceros a partir del punto decimal, consideraremos como que no tiene decimales
-    boolean tieneDecimales(double num){
+    /*boolean tieneDecimales(double num){
         int index=0;
         String numCadena = num+"";
         do{
@@ -95,9 +106,9 @@ public class Vector {
         index++;
 
         return numCadena.length()-index != 1;
-    }
+    }*/
 
-    void showRes(Vector vectorResultante){
-        System.out.println("<"+vectorResultante.i+","+vectorResultante.j+","+vectorResultante.k+">");
+    String showRes(Vector vectorResultante){
+        return "< "+vectorResultante.i+"i, "+vectorResultante.j+"j, "+vectorResultante.k+"k >";
     }
 }

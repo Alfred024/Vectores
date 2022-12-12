@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -38,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
+
     public void changeActivity(View view){
         Intent nextActivity = new Intent(this, proceduresActivity.class);
+        nextActivity.putExtra("key",procedimientoButton(getVectorA(), getVectorB()));
         startActivity(nextActivity);
     }
     Vector getVectorA(){
@@ -99,15 +100,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public String procedimientoButton(Vector v1, Vector v2){
+        Vector res = v1.sumaVectores(v2);
+        String procedimiento = v1.getProcedimiento(v2, res);
+        return procedimiento;
+    }
 
+    /*Métodos operacioes*/
     public void suma(Vector v1, Vector v2){
         Vector resultante = v1.sumaVectores(v2);
-        String resSuma = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
+        String resSuma = v1.showRes(resultante);
         resView.setText(resSuma);
     }
     public void resta(Vector v1, Vector v2){
         Vector resultante = v1.restaVectores(v2);
-        String resResta = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
+        String resResta = v1.showRes(resultante);
         resView.setText(resResta);
     }
     public void multiplicaion(Vector v1, Vector v2){
@@ -131,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void productoVectorial(Vector v1, Vector v2){
         Vector resultante = v1.productoVectorial(v2);
-        String resResta = "< "+resultante.i+"i ,"+resultante.j+"j ,"+resultante.k+"k >";
+        String resResta = v1.showRes(resultante);
         resView.setText(resResta);
     }
     public void areaEntreVectores(Vector v1, Vector v2){
@@ -159,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
 
 //Métodos que se ejecutan al momento de crear una app
 /*
-@Override
     Método que crea la actividad a ejecutar (viene por default)
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
