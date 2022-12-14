@@ -21,7 +21,7 @@ public class proceduresActivity extends AppCompatActivity {
         procedimiento.setText(procedimintoRecibido);
     }
     public void backToMain(View view){
-        Intent mainActivity = new Intent(this, MainActivity.class);
+        Intent mainActivity = new Intent(this, Operaciones2Vectores.class);
         startActivity(mainActivity);
     }
 }

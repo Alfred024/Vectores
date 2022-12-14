@@ -1,7 +1,7 @@
 <resources>
     /*Main Activity*/
     <string name="App_Title">Vectores putos</string>
-    <string name="menu"></string>
+    <string name="changeActivityButton">Cambiar a pestaña</string>
     
     /*Activity Operaciones con 2 vectores*/
     <string name="app_name">demo2</string>
