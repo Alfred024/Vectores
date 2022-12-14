@@ -70,14 +70,14 @@ public class Vector {
         return areaVector;
     }
 
-    double anguloEntreVectores(Vector v2,String rad_deg){
+    double anguloEntreVectores(Vector v2,int idRadioButton){
         Vector aux = Vector.this.multiVector(v2);
         double numerador = aux.i+aux.j+aux.k;
         double denominador = Vector.this.magnitudVector()*v2.magnitudVector();
         System.out.println("Num: "+numerador);
         System.out.println("Den: "+denominador);
         double res = (Math.acos(numerador/denominador));
-        if(rad_deg == "Radianes"){
+        if(idRadioButton == 2131231227){
             return res;
         }else{
             return res*57.3;

@@ -112,16 +112,20 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Área sobre vectores A B");
             areaEntreVectores(vector1, vector2);
         }
-
         if(operacion.equals("Ángulo entre vectores")){
             operationView.setText("Ángulo entre vectores A B");
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
-            if(brGrados.isChecked()){
-                anguloEntreVectores(vector1,vector2,brGrados.toString());
-            }
+
             if(brRadianes.isChecked()){
-                anguloEntreVectores(vector1,vector2,brRadianes.toString());
+                anguloEntreVectores(vector1,vector2,brGrados.getId());
+                /*brGrados.setVisibility(View.INVISIBLE);
+                brRadianes.setVisibility(View.INVISIBLE);*/
+            }
+            if(brGrados.isChecked()){
+                anguloEntreVectores(vector1,vector2,brRadianes.getId());
+                /*brGrados.setVisibility(View.INVISIBLE);
+                brRadianes.setVisibility(View.INVISIBLE);*/
             }
         }
 
@@ -197,8 +201,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
         String resText = area+"";
         resView.setText(resText);
     }
-    public void anguloEntreVectores(Vector v1, Vector v2, String ope){
-        double angulo = v1.anguloEntreVectores(v2, ope);
+    public void anguloEntreVectores(Vector v1, Vector v2, int idOfButton){
+        double angulo = v1.anguloEntreVectores(v2, idOfButton);
         String resText = angulo+"";
         resView.setText(resText);
     }
