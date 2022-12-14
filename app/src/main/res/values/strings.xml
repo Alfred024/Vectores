@@ -1,4 +1,9 @@
 <resources>
+    /*Main Activity*/
+    <string name="App_Title">Vectores putos</string>
+    <string name="menu"></string>
+    
+    /*Activity Operaciones con 2 vectores*/
     <string name="app_name">demo2</string>
     <string name="j">j</string>
     <string name="k">k</string>
@@ -17,5 +22,6 @@
     /*Procedures Activity*/
     <string name="return_button">Regresar</string>
     <string name="title_Label">Procedimientos</string>
+    <string name="title_activity_main2">MainActivity2</string>
 
 </resources>
