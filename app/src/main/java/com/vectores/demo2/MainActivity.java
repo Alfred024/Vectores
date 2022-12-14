@@ -29,7 +29,13 @@ public class MainActivity extends AppCompatActivity {
     public void changeActivityButton(View view){
         String operacion = spinnerMain.getSelectedItem().toString();
         Intent nextActivity = null;
+        if(operacion == "Operaciones con 1 vector"){
+            nextActivity = new Intent(this, Operaciones2Vectores.class);
+        }
         if(operacion == "Operaciones con 2 vectores"){
+            nextActivity = new Intent(this, Operaciones2Vectores.class);
+        }
+        if(operacion == "Operaciones con 3 vectores"){
             nextActivity = new Intent(this, Operaciones2Vectores.class);
         }
 

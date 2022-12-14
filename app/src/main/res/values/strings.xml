@@ -18,6 +18,8 @@
     <string name="ingrese_el_valor_de_los_componentes">Ingrese el valor de los componentes</string>
     <string name="txt_res">Resultado</string>
     <string name="changeActivity_B">Ver procedimiento</string>
+    <string name="radianes">Radianes</string>
+    <string name="grados">Grados</string>
 
     /*Procedures Activity*/
     <string name="return_button">Regresar</string>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,12 +16,18 @@ public class Operaciones2Vectores extends AppCompatActivity {
     private EditText x,y,z,x2,y2,z2;
     private TextView resView, operationView;
     private Spinner spinner1;
+    private RadioButton brRadianes, brGrados;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_operaciones2_vectores);
+
+        brRadianes = (RadioButton) findViewById(R.id.buttonRadianes);
+        brRadianes.setVisibility(View.INVISIBLE);
+        brGrados = (RadioButton) findViewById(R.id.buttonGrados);
+        brGrados.setVisibility(View.INVISIBLE);
 
         x = (EditText)findViewById(R.id.ejeX);
         y = (EditText)findViewById(R.id.ejeY);
@@ -33,7 +40,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación", "Magnitud","Producto vectorial","Área sobre vectores A B"};
+        String operaciones[] = {"Suma", "Resta", "Multiplicación",
+                "Magnitud","Producto vectorial","Área sobre vectores","Ángulo entre vectores"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
@@ -45,8 +53,11 @@ public class Operaciones2Vectores extends AppCompatActivity {
     }
     Vector getVectorA(){
         String xA = x.getText().toString();
+        if(xA.isEmpty()){ xA = "0";}
         String yA = y.getText().toString();
+        if(yA.isEmpty()){ yA = "0";}
         String zA = z.getText().toString();
+        if(zA.isEmpty()){ zA = "0";}
 
         int xNum = Integer.parseInt(xA);
         int yNum = Integer.parseInt(yA);
@@ -56,8 +67,11 @@ public class Operaciones2Vectores extends AppCompatActivity {
     }
     Vector getVectorB(){
         String xB = x2.getText().toString();
+        if(xB.isEmpty()){ xB = "0";}
         String yB = y2.getText().toString();
+        if(yB.isEmpty()){ yB = "0";}
         String zB = z2.getText().toString();
+        if(zB.isEmpty()){ zB = "0";}
 
         int xNum = Integer.parseInt(xB);
         int yNum = Integer.parseInt(yB);
@@ -94,9 +108,21 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Producto vectorial A*B");
             productoVectorial(vector1, vector2);
         }
-        if(operacion.equals("Área sobre vectores A B")){
+        if(operacion.equals("Área sobre vectores")){
             operationView.setText("Área sobre vectores A B");
             areaEntreVectores(vector1, vector2);
+        }
+
+        if(operacion.equals("Ángulo entre vectores")){
+            operationView.setText("Ángulo entre vectores A B");
+            brGrados.setVisibility(View.VISIBLE);
+            brRadianes.setVisibility(View.VISIBLE);
+            if(brGrados.isChecked()){
+                anguloEntreVectores(vector1,vector2,brGrados.toString());
+            }
+            if(brRadianes.isChecked()){
+                anguloEntreVectores(vector1,vector2,brRadianes.toString());
+            }
         }
 
     }
@@ -171,5 +197,9 @@ public class Operaciones2Vectores extends AppCompatActivity {
         String resText = area+"";
         resView.setText(resText);
     }
-
+    public void anguloEntreVectores(Vector v1, Vector v2, String ope){
+        double angulo = v1.anguloEntreVectores(v2, ope);
+        String resText = angulo+"";
+        resView.setText(resText);
+    }
 }

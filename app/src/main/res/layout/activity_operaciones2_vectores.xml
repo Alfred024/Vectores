@@ -28,10 +28,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="140dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#873D94"
         android:onClick="calcularButton"
         android:rotationY="0"
@@ -75,7 +75,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:text="@string/ingrese_el_valor_de_los_componentes"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -174,8 +174,8 @@
         android:id="@+id/txt_res"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="48dp"
         android:text="@string/txt_res"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -208,5 +208,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:rippleColor="#9C27B0" />
+
+    <RadioGroup
+        android:id="@+id/radioButtonsContainer"
+        android:layout_width="123dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpinner">
+
+        <RadioButton
+            android:id="@+id/buttonRadianes"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/grados" />
+
+        <RadioButton
+            android:id="@+id/buttonGrados"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/radianes" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

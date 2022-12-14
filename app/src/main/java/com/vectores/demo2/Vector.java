@@ -11,12 +11,7 @@ public class Vector {
         size = 3;
     }
 
-    /*public Vector(int i, int j) {
-        this.i = i;
-        this.j = j;
-        size = 2;
-    }*/
-
+    /*Podemos hacer una clase procedimientos pra trabajar estos individualemnte de las operaciones*/
     String getProcedimiento(Vector v2, Vector res, String operacion){
         String procedimiento = "(";
         procedimiento+= Vector.this.i+"i"+operacion+v2.i+"i), (";
@@ -75,14 +70,19 @@ public class Vector {
         return areaVector;
     }
 
-    double anguloEntreVectores(Vector v2){
+    double anguloEntreVectores(Vector v2,String rad_deg){
         Vector aux = Vector.this.multiVector(v2);
         double numerador = aux.i+aux.j+aux.k;
         double denominador = Vector.this.magnitudVector()*v2.magnitudVector();
         System.out.println("Num: "+numerador);
         System.out.println("Den: "+denominador);
         double res = (Math.acos(numerador/denominador));
-        return res;
+        if(rad_deg == "Radianes"){
+            return res;
+        }else{
+            return res*57.3;
+        }
+
     }
 
     String showRes(Vector vectorResultante){
