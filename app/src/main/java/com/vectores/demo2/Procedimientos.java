@@ -77,7 +77,7 @@ public class Procedimientos {
     }
 
     int posicionElemento(int espaciosRequeridos){
-        
+
         return 0;
     }
 

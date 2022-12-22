@@ -2,6 +2,7 @@
     /*Main Activity*/
     <string name="App_Title">Vectores putos</string>
     <string name="changeActivityButton">Cambiar a pestaña</string>
+    <string name="spinner_Pestañas">Seleccione</string>
     
     /*Activity Operaciones con 2 vectores*/
     <string name="app_name">demo2</string>
