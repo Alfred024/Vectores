@@ -4,6 +4,8 @@ public class Vector {
     int i,j,k,size;
     int x=0,y=0;
 
+    //Hacer una clase procedimientos que herede los atributos de la clase Vector para que pueda trabajar con ellos
+
     public Vector(int i, int j, int k) {
         this.i = i;
         this.j = j;
@@ -11,64 +13,7 @@ public class Vector {
         size = 3;
     }
 
-    /*Procedimientos que devuelven un vector*/
-    //(Producto vectorial)
-    String getProcedimiento(Vector v2, Vector res, char operacion){
-        String procedimiento = "(";
-
-        if(operacion == '-' || operacion == '+' || operacion == '·'){
-            procedimiento+= "("+Vector.this.i+"i"+operacion+v2.i+"i), (";
-            procedimiento+= Vector.this.j+"j "+operacion+ v2.j+"j), (";
-            procedimiento+= Vector.this.k+"k "+operacion+ v2.k+"k) = ";
-            procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
-        }
-        //producto vectorial
-        if(operacion == 'p'){
-            int vuelta = 0;
-            while (++vuelta < 3){
-
-            }
-
-            operacion = '·';
-            procedimiento+= "("+Vector.this.j+operacion+v2.k+")-("+Vector.this.k+operacion+v2.j+") = "+res.i+"i\n";
-            procedimiento+= Vector.this.i+operacion+v2.k+")-("+Vector.this.k+operacion+v2.i+") = "+res.j+"j\n";
-            procedimiento+= Vector.this.i+operacion+v2.j+")-("+Vector.this.j+operacion+v2.i+") = "+res.k+"k\n";
-            procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
-            //Método para calcular el tamaño del número más grande (de la clomuna actual)
-            //Método para agregar los tamaños que haga falta para completar la longitud de
-        }
-        return procedimiento;
-    }
-
-    int getSpaces(Vector v2, int vuelta){
-        int espacios;
-
-        if( (((Vector.this.i)+"").length()) > (((v2.i)+"").length()) ){
-            espacios = ((Vector.this.i)+"").length();
-        }else{
-            espacios = ((v2.i)+"").length();
-        }
-        return 0;
-    }
-
-
-    /*Procedimientos que devuelven un double*/
-    //(Área sobre vectores, Ángulo sobre vectores)
-    String getProcedimiento(Vector res, String operacion){
-        String procedimiento = "(";
-        if(operacion == "m" ){
-            procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
-            procedimiento+="Magnitud: " +res.magnitudVector()+"";
-        }
-        if(operacion == "a"){
-            //área  entre vectores
-        }
-        if(operacion == "d"){
-            //ángulo entre vectores
-        }
-        return procedimiento;
-    }
-
+    //OPERACIONES MÉTODOS
     Vector sumaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = v2.i + Vector.this.i;
@@ -77,7 +22,6 @@ public class Vector {
         return res;
     }
 
-    //El orden de los vectores sí afecta el resultado final
     Vector restaVectores(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = Vector.this.i - v2.i;

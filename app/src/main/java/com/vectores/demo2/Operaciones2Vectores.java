@@ -128,6 +128,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
 
     //Suma, Resta y Multiplicación
     public String getProcedimientoView(Vector v1, Vector v2, String operacion){
+        Procedimientos objProcedimientos = new Procedimientos(v1);
         char signoOperacion = ' ';
         char signoOperacion2;
         Vector res = null;
@@ -162,6 +163,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
 
         }
         procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
+        //procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion);
         return procedimiento;
     }
 
