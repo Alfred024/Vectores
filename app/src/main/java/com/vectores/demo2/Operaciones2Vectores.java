@@ -116,38 +116,40 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Ángulo entre vectores A B");
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
-
-            if(brRadianes.isChecked()){
-                anguloEntreVectores(vector1,vector2,brGrados.getId());
-                /*brGrados.setVisibility(View.INVISIBLE);
-                brRadianes.setVisibility(View.INVISIBLE);*/
-            }
             if(brGrados.isChecked()){
+                anguloEntreVectores(vector1,vector2,brGrados.getId());
+            }
+            if(brRadianes.isChecked()){
                 anguloEntreVectores(vector1,vector2,brRadianes.getId());
-                /*brGrados.setVisibility(View.INVISIBLE);
-                brRadianes.setVisibility(View.INVISIBLE);*/
             }
         }
 
     }
 
+    //Suma, Resta y Multiplicación
     public String getProcedimientoView(Vector v1, Vector v2, String operacion){
-        String signoOperacion="";
+        char signoOperacion = ' ';
+        char signoOperacion2;
         Vector res = null;
+        String procedimiento, procedimiento2="";
+        double resUnidad;
         if(operacion.equals("Suma")){
-            signoOperacion = "+";
+            signoOperacion = '+';
             res = v1.sumaVectores(v2);
         }
         if(operacion.equals("Resta")){
-            signoOperacion = "-";
+            signoOperacion = '-';
             res = v1.restaVectores(v2);
         }
         if(operacion.equals("Multiplicación")){
-            signoOperacion = "·";
+            signoOperacion = '+';
             res = v1.multiVector(v2);
         }
         if(operacion.equals("Magnitud")){
-
+            signoOperacion = '-';
+            res = v1.restaVectores(v2);
+            signoOperacion2 = 'm';
+            procedimiento2 = res.getProcedimiento(res, (signoOperacion2+""));
         }
         if(operacion.equals("Producto vectorial")){
 
@@ -155,7 +157,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
         if(operacion.equals("Área sobre vectores A B")){
 
         }
-        String procedimiento = v1.getProcedimiento(v2, res, signoOperacion);
+
+        procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
         return procedimiento;
     }
 

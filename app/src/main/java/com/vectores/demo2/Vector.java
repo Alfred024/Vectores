@@ -11,13 +11,28 @@ public class Vector {
         size = 3;
     }
 
-    /*Podemos hacer una clase procedimientos pra trabajar estos individualemnte de las operaciones*/
-    String getProcedimiento(Vector v2, Vector res, String operacion){
+    /*Procedimientos que devuelven un vector*/
+    //(Producto vectorial)
+    String getProcedimiento(Vector v2, Vector res, char operacion){
         String procedimiento = "(";
-        procedimiento+= Vector.this.i+"i"+operacion+v2.i+"i), (";
-        procedimiento+= Vector.this.j+"j "+operacion+ v2.j+"j), (";
-        procedimiento+= Vector.this.k+"k "+operacion+ v2.k+"k) = ";
-        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >";
+
+        if(operacion == '-' || operacion == '+' || operacion == '·'){
+            procedimiento+= Vector.this.i+"i"+operacion+v2.i+"i), (";
+            procedimiento+= Vector.this.j+"j "+operacion+ v2.j+"j), (";
+            procedimiento+= Vector.this.k+"k "+operacion+ v2.k+"k) = ";
+            procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
+        }
+        return procedimiento;
+    }
+
+    /*Procedimientos que devuelven un double*/
+    //(Magnitud, Área sobre vectores, Ángulo sobre vectores)
+    String getProcedimiento(Vector res, String operacion){
+        String procedimiento = "(";
+        if(operacion == "m" ){
+            procedimiento+= "Raíz: ("+res.i+"2"+res.j+"2"+res.k+"2)\n";
+            procedimiento+="Magnitud: " +res.magnitudVector()+"";
+        }
         return procedimiento;
     }
 
@@ -77,7 +92,7 @@ public class Vector {
         System.out.println("Num: "+numerador);
         System.out.println("Den: "+denominador);
         double res = (Math.acos(numerador/denominador));
-        if(idRadioButton == 2131231227){
+        if(idRadioButton == 2131231226){
             return res;
         }else{
             return res*57.3;
