@@ -142,7 +142,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             res = v1.restaVectores(v2);
         }
         if(operacion.equals("Multiplicación")){
-            signoOperacion = '+';
+            signoOperacion = '·';
             res = v1.multiVector(v2);
         }
         if(operacion.equals("Magnitud")){
@@ -152,12 +152,15 @@ public class Operaciones2Vectores extends AppCompatActivity {
             procedimiento2 = res.getProcedimiento(res, (signoOperacion2+""));
         }
         if(operacion.equals("Producto vectorial")){
+            signoOperacion = 'p';
 
         }
         if(operacion.equals("Área sobre vectores A B")){
 
         }
+        if(operacion.equals("Ángulo entre vectores A B")){
 
+        }
         procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
         return procedimiento;
     }
