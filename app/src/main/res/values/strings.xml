@@ -1,6 +1,6 @@
 <resources>
     /*Main Activity*/
-    <string name="App_Title">Vectores putos</string>
+    <string name="App_Title">Vectores App Demo</string>
     <string name="changeActivityButton">Cambiar a pestaña</string>
     <string name="spinner_Pestañas">Seleccione</string>
     
