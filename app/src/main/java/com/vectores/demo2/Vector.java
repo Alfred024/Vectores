@@ -30,7 +30,7 @@ public class Vector {
     String getProcedimiento(Vector res, String operacion){
         String procedimiento = "(";
         if(operacion == "m" ){
-            procedimiento+= "Raíz: ("+res.i+"2"+res.j+"2"+res.k+"2)\n";
+            procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
             procedimiento+="Magnitud: " +res.magnitudVector()+"";
         }
         return procedimiento;
