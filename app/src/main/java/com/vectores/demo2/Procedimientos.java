@@ -1,16 +1,16 @@
 package com.vectores.demo2;
 
 public class Procedimientos {
-
     Vector vectorA;
+
     public Procedimientos(Vector vector) {
         vectorA = vector;
     }
 
     String getProcedimiento(Vector v2, Vector res, char operacion){
-        String procedimiento = "(";
+        String procedimiento = "";
 
-        //Suma, resta, multiplicación
+        //Suma, resta, multiplicaión
         if(operacion == '-' || operacion == '+' || operacion == '·'){
             procedimiento+= "("+vectorA.i+"i"+operacion+v2.i+"i), (";
             procedimiento+= vectorA.j+"j "+operacion+ v2.j+"j), (";
@@ -18,40 +18,43 @@ public class Procedimientos {
             procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
         }
 
-        //producto vectorial
+        //Producto vectorial
         if(operacion == 'p'){
-            int vuelta = 0;
+
+            String componentes[][] =
+                    {{"i", "j", "k"},
+                            {vectorA.i+"", vectorA.j+"", vectorA.k+""},
+                            {v2.i+"", v2.j+"", v2.k+""}};
             int espaciosIJK[] = new int[3];
 
-            procedimiento+= "|";
-            while (vuelta++ < 2){
-                espaciosIJK[vuelta] = getSpaces(v2, vuelta);
-                //Método para calcular la posición de en medio para ahí escirbir la i,j,k
-            }procedimiento+= "|\n";
 
-            vuelta = 0;
-            procedimiento+= "|";
-            while (vuelta++ < 2){
-                espaciosIJK[vuelta] = getSpaces(v2, vuelta);
-                //Método para calcular la posición de en medio para ahí escirbir la i,j,k
-            }procedimiento+= "|\n";
+            for (int f = 0; f < espaciosIJK.length; f++) {
+                procedimiento+= "|";
+                for (int c = 0; c < espaciosIJK.length; c++) {
+                    espaciosIJK[c] = getSpaces(v2, c);
+                    for (int i = 0; i < getSpacesLateral(espaciosIJK[c], 1); i++) {
+                        procedimiento+=" ";
+                    }
+                    procedimiento+=componentes[f][c];
+                    //Espacios lado derecho
+                    for (int i = 0; i < getSpacesLateral(espaciosIJK[c], 1); i++) {
+                        procedimiento+=" ";
+                    }
+                }procedimiento+= "|\n";
+            }
 
-            //Otro método para sacar la diferencia que hay entre los espacios que habrá vacíos y la longitud del número
-            //para así poder colocarlo en la posición de en medio
-
-            //Parte fácil
             operacion = '·';
             procedimiento+= "("+vectorA.j+operacion+v2.k+")-("+vectorA.k+operacion+v2.j+") = "+res.i+"i\n";
-            procedimiento+= vectorA.i+operacion+v2.k+")-("+vectorA.k+operacion+v2.i+") = "+res.j+"j\n";
-            procedimiento+= vectorA.i+operacion+v2.j+")-("+vectorA.j+operacion+v2.i+") = "+res.k+"k\n";
+            procedimiento+= "("+vectorA.i+operacion+v2.k+")-("+vectorA.k+operacion+v2.i+") = "+res.j+"j\n";
+            procedimiento+= "("+vectorA.i+operacion+v2.j+")-("+vectorA.j+operacion+v2.i+") = "+res.k+"k\n";
             procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
         }
         return procedimiento;
     }
 
+    //Obtener el número con el mayor número de chars
     int getSpaces(Vector v2, int vuelta){
         int espacios = 0;
-
         if (vuelta == 0){
             if( (((vectorA.i)+"").length()) > (((v2.i)+"").length()) ){
                 espacios = ((vectorA.i)+"").length();
@@ -73,30 +76,33 @@ public class Procedimientos {
                 espacios = ((v2.k)+"").length();
             }
         }
+
         return espacios;
     }
 
-    int posicionElemento(int espaciosRequeridos){
-
-        return 0;
+    //No es un índice el que debemos calcular, más bien es un número de espacios que debemos de dejar al costado de cada nuevo elemento
+    int getSpacesLateral(int numMasLargo_tam, int numActual_tam){
+        int espaciosLaterales = (numMasLargo_tam - numActual_tam)/2;
+        return espaciosLaterales+1;
     }
+
 
     /*Procedimientos que devuelven un double*/
     //(Área sobre vectores, Ángulo sobre vectores)
     String getProcedimiento(Vector res, String operacion){
-        String procedimiento = "(";
-        if(operacion == "m" ){
+        String procedimiento = "";
+        if("m".equals(operacion) ){
             procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
             procedimiento+="Magnitud: " +res.magnitudVector()+"";
         }
-        if(operacion == "a"){
+        if("a".equals(operacion)){
             //área  entre vectores
             /*
              * 1. Calculamos el producto vectorial
              * 2. Calculamos la magnitud del producto
              * */
         }
-        if(operacion == "d"){
+        if("d".equals(operacion)){
             //ángulo entre vectores
             /*
              *
@@ -104,4 +110,7 @@ public class Procedimientos {
         }
         return procedimiento;
     }
+
+
+
 }
