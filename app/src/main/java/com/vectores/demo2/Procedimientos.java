@@ -21,22 +21,26 @@ public class Procedimientos {
         //Producto vectorial
         if(operacion == 'p'){
 
+            /**
+             * 1.- Antes de hacer cualquier inserción en los string, calcular el tamaño mas largo de el número en la columna actual
+             * 2.- Después hará falta comparar la longitud de cada elemento que se insertará, de forma que podamos sacar la cantidad de espacios
+             *     que hay que dejar de izquierda a derecha
+             */
             String componentes[][] =
                     {{"i", "j", "k"},
                             {vectorA.i+"", vectorA.j+"", vectorA.k+""},
                             {v2.i+"", v2.j+"", v2.k+""}};
             int espaciosIJK[] = new int[3];
 
-
-            for (int f = 0; f < espaciosIJK.length; f++) {
+            //es necesari encontarr eel elemento más grande de cada
+            for (int f = 0; f < 3; f++) {
+                espaciosIJK[f] = getSpaces(v2, f);
                 procedimiento+= "|";
-                for (int c = 0; c < espaciosIJK.length; c++) {
-                    espaciosIJK[c] = getSpaces(v2, c);
+                for (int c = 0; c < 3; c++) {
                     for (int i = 0; i < getSpacesLateral(espaciosIJK[c], 1); i++) {
                         procedimiento+=" ";
                     }
                     procedimiento+=componentes[f][c];
-                    //Espacios lado derecho
                     for (int i = 0; i < getSpacesLateral(espaciosIJK[c], 1); i++) {
                         procedimiento+=" ";
                     }
