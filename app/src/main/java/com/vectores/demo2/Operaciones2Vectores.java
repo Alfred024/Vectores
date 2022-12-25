@@ -129,10 +129,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
     //Suma, Resta y Multiplicación
     public String getProcedimientoView(Vector v1, Vector v2, String operacion){
         Procedimientos objProcedimientos = new Procedimientos(v1);
-        char signoOperacion = ' ';
-        char signoOperacion2;
-        Vector res = null;
+        char signoOperacion = ' ', signoOperacion2;
         String procedimiento, procedimiento2="";
+        Vector res = null;
+
         double resUnidad;
         if(operacion.equals("Suma")){
             signoOperacion = '+';
@@ -150,11 +150,11 @@ public class Operaciones2Vectores extends AppCompatActivity {
             signoOperacion = '-';
             res = v1.restaVectores(v2);
             signoOperacion2 = 'm';
-            procedimiento2 = res.getProcedimiento(res, (signoOperacion2+""));
+            procedimiento2 = objProcedimientos.getProcedimientoB(v2,res, signoOperacion2);
         }
         if(operacion.equals("Producto vectorial")){
             signoOperacion = 'p';
-
+            res = v1.productoVectorial(v2);
         }
         if(operacion.equals("Área sobre vectores A B")){
 
@@ -162,8 +162,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
         if(operacion.equals("Ángulo entre vectores A B")){
 
         }
-        procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
-        //procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion);
+        //procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
+        procedimiento = objProcedimientos.getProcedimientoA(v2, res, signoOperacion)+procedimiento2;
         return procedimiento;
     }
 
@@ -203,6 +203,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
         String resResta = v1.showRes(resultante);
         resView.setText(resResta);
     }
+    //Calcula el área de un paralelogramo, para calcular el área de un triángulo hay que dividir el resultado entre 2
     public void areaEntreVectores(Vector v1, Vector v2){
         double area = 0;
         area = v1.areaParalelogramo(v2);

@@ -3,11 +3,12 @@ package com.vectores.demo2;
 public class Procedimientos {
     Vector vectorA;
 
+
     public Procedimientos(Vector vector) {
         vectorA = vector;
     }
 
-    String getProcedimiento(Vector v2, Vector res, char operacion){
+    String getProcedimientoA(Vector v2, Vector res, char operacion){
         String procedimiento = "";
 
         //Suma, resta, multiplicaión
@@ -17,7 +18,7 @@ public class Procedimientos {
             procedimiento+= vectorA.k+"k "+operacion+ v2.k+"k) = ";
             procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
         }
-
+        //Producto vectorial
         if(operacion == 'p'){
             String componentes[][] =
                     {{"i", "j", "k"},
@@ -91,20 +92,23 @@ public class Procedimientos {
 
     /*Procedimientos que devuelven un double*/
     //(Área sobre vectores, Ángulo sobre vectores)
-    String getProcedimiento(Vector res, String operacion){
+    String getProcedimientoB(Vector v2, Vector res, char operacion){
         String procedimiento = "";
-        if("m".equals(operacion) ){
+        if(operacion == 'm'){
             procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
             procedimiento+="Magnitud: " +res.magnitudVector()+"";
         }
-        if("a".equals(operacion)){
-            //área  entre vectores
+        if(operacion == 'a'){
+            //área de un paralelogramo entre vectores
             /*
              * 1. Calculamos el producto vectorial
              * 2. Calculamos la magnitud del producto
              * */
+            procedimiento += this.getProcedimientoA(v2, res, operacion)+"\n";
+            operacion = 'm';
+            procedimiento += this.getProcedimientoB(v2, res, operacion);
         }
-        if("d".equals(operacion)){
+        if(operacion == 'd'){
             //ángulo entre vectores
             /*
              *
