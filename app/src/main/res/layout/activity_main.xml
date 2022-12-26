@@ -38,7 +38,7 @@
         android:layout_width="175dp"
         android:layout_height="53dp"
         android:layout_marginTop="100dp"
-        android:background="#3F51B5"
+        android:background="#330867"
         android:onClick="changeActivityButton"
         android:text="@string/changeActivityButton"
         app:layout_constraintEnd_toEndOf="parent"

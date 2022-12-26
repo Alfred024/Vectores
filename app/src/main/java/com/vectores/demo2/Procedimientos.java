@@ -100,10 +100,6 @@ public class Procedimientos {
         }
         if(operacion == 'a'){
             //área de un paralelogramo entre vectores
-            /*
-             * 1. Calculamos el producto vectorial
-             * 2. Calculamos la magnitud del producto
-             * */
             procedimiento += this.getProcedimientoA(v2, res, operacion)+"\n";
             operacion = 'm';
             procedimiento += this.getProcedimientoB(v2, res, operacion);
