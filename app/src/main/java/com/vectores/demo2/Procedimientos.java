@@ -8,55 +8,87 @@ public class Procedimientos {
         vectorA = vector;
     }
 
-    String getProcedimientoA(Vector v2, Vector res, char operacion){
+    String getProcedimiento(Vector v2, Vector res, char operacion){
         String procedimiento = "";
-
         //Suma, resta, multiplicaión
         if(operacion == '-' || operacion == '+' || operacion == '·'){
-            procedimiento+= "("+vectorA.i+"i"+operacion+v2.i+"i), (";
-            procedimiento+= vectorA.j+"j "+operacion+ v2.j+"j), (";
-            procedimiento+= vectorA.k+"k "+operacion+ v2.k+"k) = ";
-            procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
+            procedimiento+= procedimientoSRM(v2, res, operacion);
         }
         //Producto vectorial
         if(operacion == 'p'){
-            String componentes[][] =
-                    {{"i", "j", "k"},
-                            {vectorA.i+"", vectorA.j+"", vectorA.k+""},
-                            {v2.i+"", v2.j+"", v2.k+""}};
-            int espaciosIJK[] = new int[3];
-            int espaciosLateral;
-
-            for (int i = 0; i < espaciosIJK.length; i++) {
-                espaciosIJK[i] = getSpaces(v2, i); //Calcula el elemento más largo de la columna de componentes actual
-            }
-
-            for (int f = 0; f < 3; f++) {
-                procedimiento+= "|";
-                for (int c = 0; c < 3; c++) {
-                    espaciosLateral = getSpacesLateral(espaciosIJK[c], (componentes[f][c]).length());
-                    for (int i = 0; i < espaciosLateral; i++) {
-                        procedimiento+=" ";
-                    }
-                    procedimiento+=componentes[f][c];
-                    for (int i = 0; i < espaciosLateral; i++) {
-                        procedimiento+=" ";
-                    }
-                }procedimiento+= "|\n";
-
-            }
-
-            operacion = '·';
-            procedimiento+= "("+vectorA.j+operacion+v2.k+")-("+vectorA.k+operacion+v2.j+") = "+res.i+"i\n";
-            procedimiento+= "("+vectorA.i+operacion+v2.k+")-("+vectorA.k+operacion+v2.i+") = "+res.j+"j\n";
-            procedimiento+= "("+vectorA.i+operacion+v2.j+")-("+vectorA.j+operacion+v2.i+") = "+res.k+"k\n";
-            procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
+            procedimiento+= procedimeintoProductoVec(v2, res, operacion);
         }
+        //Magnitud entre vectores
+        if(operacion == 'm'){
+            procedimiento+= procedimeintoMagnitudVecs(v2, res, operacion);
+        }
+        //Área del paralelogramo formado entre 2 vectores
+        if(operacion == 'a'){
+            //área de un paralelogramo entre vectores, para calcular el área de un triángulo se divide entre 2
+            procedimiento += this.getProcedimiento(v2, res, operacion)+"\n";
+            operacion = 'm';
+            procedimiento += this.getProcedimiento(v2, res, operacion);
+        }
+        if(operacion == 'd'){
+            //ángulo entre vectores
+            /*
+             *
+             * */
+        }
+
         return procedimiento;
     }
 
-    //Obtener el número con el mayor número de chars
-    int getSpaces(Vector v2, int vuelta){
+    //Obtener procedimientos
+
+    //Suma, Resta y Multiplicación
+    String procedimientoSRM(Vector v2, Vector res, char operacion){
+        String procedimiento="";
+        procedimiento+= "("+vectorA.i+"i"+operacion+v2.i+"i), (";
+        procedimiento+= vectorA.j+"j "+operacion+ v2.j+"j), (";
+        procedimiento+= vectorA.k+"k "+operacion+ v2.k+"k) = ";
+        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
+        return procedimiento;
+    }
+
+    //Producto vectorial
+    String procedimeintoProductoVec(Vector v2, Vector res, char operacion){
+        String procedimiento="";
+        //Representa la matriz creada con los componentes i,j,k + los 2 vectores
+        String componentes[][] =
+                {{"i", "j", "k"},
+                        {vectorA.i+"", vectorA.j+"", vectorA.k+""},
+                        {v2.i+"", v2.j+"", v2.k+""}};
+        int espaciosIJK[] = new int[3];
+        int espacios;
+
+        //Calcula el componente más largo de cada columna (i,j,k)
+        for (int i = 0; i < espaciosIJK.length; i++) {
+            espaciosIJK[i] = mayorLongComponenteActual(v2, i);
+        }
+
+        //Explora cada componente de la matriz para anexarlos al procedimiento final
+        for (int f = 0; f < 3; f++) {
+            procedimiento+= "|";
+            for (int c = 0; c < 3; c++) {
+                espacios = espacioLaterales(espaciosIJK[c], (componentes[f][c]).length());
+                for (int i = 0; i < espacios; i++) {
+                    procedimiento+=" ";
+                }
+                procedimiento+=componentes[f][c];
+                for (int i = 0; i < espacios; i++) {
+                    procedimiento+=" ";
+                }
+            }procedimiento+= "|\n";
+        }
+
+        procedimiento+= "("+vectorA.j+'·'+v2.k+")-("+vectorA.k+'·'+v2.j+") = "+res.i+"i\n";
+        procedimiento+= "("+vectorA.i+'·'+v2.k+")-("+vectorA.k+'·'+v2.i+") = "+res.j+"j\n";
+        procedimiento+= "("+vectorA.i+'·'+v2.j+")-("+vectorA.j+'·'+v2.i+") = "+res.k+"k\n";
+        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
+        return procedimiento;
+    }
+    int mayorLongComponenteActual(Vector v2, int vuelta){
         int espacios = 0;
         if (vuelta == 0){
             if( (((vectorA.i)+"").length()) > (((v2.i)+"").length()) ){
@@ -82,37 +114,24 @@ public class Procedimientos {
 
         return espacios;
     }
-
-    //No es un índice el que debemos calcular, más bien es un número de espacios que debemos de dejar al costado de cada nuevo elemento
-    int getSpacesLateral(int numMasLargo_tam, int numActual_tam){
+    int espacioLaterales(int numMasLargo_tam, int numActual_tam){
         int espaciosLaterales = (numMasLargo_tam - numActual_tam)/2;
         return espaciosLaterales+1;
     }
 
-
-    /*Procedimientos que devuelven un double*/
-    //(Área sobre vectores, Ángulo sobre vectores)
-    String getProcedimientoB(Vector v2, Vector res, char operacion){
-        String procedimiento = "";
-        if(operacion == 'm'){
-            procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
-            procedimiento+="Magnitud: " +res.magnitudVector()+"";
-        }
-        if(operacion == 'a'){
-            //área de un paralelogramo entre vectores
-            procedimiento += this.getProcedimientoA(v2, res, operacion)+"\n";
-            operacion = 'm';
-            procedimiento += this.getProcedimientoB(v2, res, operacion);
-        }
-        if(operacion == 'd'){
-            //ángulo entre vectores
-            /*
-             *
-             * */
-        }
+    //Magnitud vectorial
+    String procedimeintoMagnitudVecs(Vector v2, Vector res, char operacion){
+        String procedimiento="";
+        procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
+        procedimiento+="Magnitud: " +res.magnitudVector()+"";
         return procedimiento;
     }
 
+    //Área de paralelogramo dado 2 vectores
+    String procedimientoAreaVectores(Vector v2, Vector res, char operacion){
+        String procedimiento = "";
 
+        return procedimiento;
+    }
 
 }

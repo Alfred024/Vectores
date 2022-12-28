@@ -126,7 +126,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
 
     }
 
-    //Suma, Resta y Multiplicación
     public String getProcedimientoView(Vector v1, Vector v2, String operacion){
         Procedimientos objProcedimientos = new Procedimientos(v1);
         char signoOperacion = ' ', signoOperacion2;
@@ -150,7 +149,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             signoOperacion = '-';
             res = v1.restaVectores(v2);
             signoOperacion2 = 'm';
-            procedimiento2 = objProcedimientos.getProcedimientoB(v2,res, signoOperacion2);
+            procedimiento2 = objProcedimientos.getProcedimiento(v2,res, signoOperacion2);
         }
         if(operacion.equals("Producto vectorial")){
             signoOperacion = 'p';
@@ -163,7 +162,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
 
         }
         //procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
-        procedimiento = objProcedimientos.getProcedimientoA(v2, res, signoOperacion)+procedimiento2;
+        procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion)+procedimiento2;
         return procedimiento;
     }
 
