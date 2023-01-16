@@ -45,6 +45,9 @@ public class Operaciones2Vectores extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
     }
+
+    int idButton = 0;
+
     public void changeActivity(View view){
         String operacion = spinner1.getSelectedItem().toString();
         Intent nextActivity = new Intent(this, proceduresActivity.class);
@@ -117,6 +120,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
             if(brGrados.isChecked()){
+                idButton=(int)brGrados.getId();
                 anguloEntreVectores(vector1,vector2,brGrados.getId());
             }
             if(brRadianes.isChecked()){
@@ -131,6 +135,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
         char signoOperacion = ' ', signoOperacion2;
         String procedimiento, procedimiento2="";
         Vector res = null;
+
 
         double resUnidad;
         if(operacion.equals("Suma")){
@@ -156,10 +161,19 @@ public class Operaciones2Vectores extends AppCompatActivity {
             res = v1.productoVectorial(v2);
         }
         if(operacion.equals("Área sobre vectores A B")){
+            signoOperacion = 'a';
 
         }
-        if(operacion.equals("Ángulo entre vectores A B")){
+        if(operacion.equals("Ángulo entre vectores")){
+            signoOperacion = 'd';
+            res = v1.multiVector(v2);
+            /*if(brGrados.isChecked()){
+                signoOperacion = 'd';
+                res = v1.multiVector(v2);
+            }
+            if(brRadianes.isChecked()){
 
+            }*/
         }
         //procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
         procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion)+procedimiento2;

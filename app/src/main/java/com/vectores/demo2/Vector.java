@@ -66,15 +66,12 @@ public class Vector {
         Vector aux = Vector.this.multiVector(v2);
         double numerador = aux.i+aux.j+aux.k;
         double denominador = Vector.this.magnitudVector()*v2.magnitudVector();
-        System.out.println("Num: "+numerador);
-        System.out.println("Den: "+denominador);
         double res = (Math.acos(numerador/denominador));
         if(idRadioButton == 2131231226){
             return res;
         }else{
             return res*57.3;
         }
-
     }
 
     String showRes(Vector vectorResultante){

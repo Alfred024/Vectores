@@ -1,7 +1,7 @@
 package com.vectores.demo2;
 
 public class Procedimientos {
-    Vector vectorA;
+    Vector vectorA; //El vector A representa nuestro vector inicial (v1/vA)
 
 
     public Procedimientos(Vector vector) {
@@ -22,6 +22,9 @@ public class Procedimientos {
         if(operacion == 'm'){
             procedimiento+= procedimeintoMagnitudVecs(v2, res, operacion);
         }
+
+
+        //Los dos de acá requieren trabajar con doubles
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'a'){
             //área de un paralelogramo entre vectores, para calcular el área de un triángulo se divide entre 2
@@ -32,8 +35,21 @@ public class Procedimientos {
         if(operacion == 'd'){
             //ángulo entre vectores
             /*
-             *
-             * */
+            * 1.- Producto escalar de A * B (Numerador)
+            * 2.- Magnitud A * Magnitud B (Denominador)
+            * 3.- Se dividen
+            * 4.-
+            * */
+
+            String procNumerador =  procedimientoPE(v2, res, '*');
+            String numerador =  procedimientoPE(res);
+            String procDenominador = procedimeintoMagnitudVector(vectorA, "a")+"\n";
+            procDenominador += procedimeintoMagnitudVector(v2, "b");
+            String denominador = denominadorAoB(vectorA)+denominadorAoB(v2);
+
+            procedimiento += procNumerador+numerador+"\n";
+            procedimiento += procDenominador;
+            procedimiento += "\n"+numerador+"/"+denominador;
         }
 
         return procedimiento;
@@ -49,6 +65,19 @@ public class Procedimientos {
         procedimiento+= vectorA.k+"k "+operacion+ v2.k+"k) = ";
         procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
         return procedimiento;
+    }
+
+    //Producto Escalar (Uno para el procedimeinto completo, otro para el resultado)
+    String procedimientoPE(Vector v2, Vector res, char operacion){
+        String procedimiento="";
+        procedimiento+= "("+vectorA.i+operacion+v2.i+")+";
+        procedimiento+= "("+vectorA.j+operacion+v2.j+")+";
+        procedimiento+= "("+vectorA.k+operacion+v2.k+")=";
+        procedimiento+= res.i+"+"+res.j+"+"+res.k+"=";
+        return procedimiento;
+    }
+    String procedimientoPE(Vector res){
+        return (res.i+res.j+res.k)+"";
     }
 
     //Producto vectorial
@@ -120,11 +149,24 @@ public class Procedimientos {
     }
 
     //Magnitud vectorial
+    /*
+    * (El primero es para la magnitud de 2 vectores, el segundo es para la magnitud de uno solo)
+    * El tercero es para los resultados individuales de la operación
+    * */
     String procedimeintoMagnitudVecs(Vector v2, Vector res, char operacion){
         String procedimiento="";
         procedimiento+= "√("+ res.i + "²" + " + " + res.j + "²" + " + " + res.k + "²" +")\n";
         procedimiento+="Magnitud: " +res.magnitudVector()+"";
         return procedimiento;
+    }
+    String procedimeintoMagnitudVector(Vector vectorX, String vectorAoB){
+        String procedimiento= "|"+vectorAoB+"|= ";
+        procedimiento+= "√("+ vectorX.i + "²" + " + " + vectorX.j + "²" + " + " + vectorX.k + "²" +")";
+        procedimiento+="= "+vectorX.magnitudVector()+"";
+        return procedimiento;
+    }
+    String denominadorAoB(Vector vectorX){
+        return vectorX.magnitudVector()+"";
     }
 
     //Área de paralelogramo dado 2 vectores
