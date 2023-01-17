@@ -117,8 +117,16 @@ public class Operaciones2Vectores extends AppCompatActivity {
             brGrados.setText("Triángulo");
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
-            idButton=(int)brGrados.getId();
-            areaEntreVectores(vector1, vector2);
+            if(brGrados.isChecked()){
+                idButton=(int)brGrados.getId();
+                areaEntreVectores(vector1, vector2);
+            }
+            if(brRadianes.isChecked()){
+                areaEntreVectores(vector1, vector2);
+            }
+
+            brRadianes.setVisibility(View.INVISIBLE);
+            brGrados.setVisibility(View.INVISIBLE);
         }
         if(operacion.equals("Ángulo entre vectores")){
             operationView.setText("Ángulo entre vectores A B");
@@ -133,6 +141,9 @@ public class Operaciones2Vectores extends AppCompatActivity {
             if(brRadianes.isChecked()){
                 anguloEntreVectores(vector1,vector2,idButton);
             }
+
+            brRadianes.setVisibility(View.INVISIBLE);
+            brGrados.setVisibility(View.INVISIBLE);
         }
 
     }
