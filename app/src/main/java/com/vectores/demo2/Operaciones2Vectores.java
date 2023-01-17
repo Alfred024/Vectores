@@ -40,7 +40,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación",
+        String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar",
                 "Magnitud","Producto vectorial","Área sobre vectores","Ángulo entre vectores"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
@@ -100,7 +100,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Resta de vectores A-B");
             resta(vector1, vector2);
         }
-        if(operacion.equals("Multiplicación")){
+        if(operacion.equals("Multiplicación/Producto escalar")){
             operationView.setText("Multiplicación de vectores A*B");
             multiplicaion(vector1, vector2);
         }
