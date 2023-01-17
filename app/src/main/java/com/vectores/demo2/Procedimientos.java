@@ -23,14 +23,19 @@ public class Procedimientos {
             procedimiento+= procedimeintoMagnitudVecs(v2, res, operacion);
         }
         //Área del paralelogramo formado entre 2 vectores
-        if(operacion == 'a'){
+        if(operacion == 'A' || operacion == 'a'){
+            //A = área de un parelelogramo, a = área de un triángulo
             procedimiento += "1.-Producto vectorial\n";
             procedimiento+= procedimeintoProductoVec(v2, res, operacion)+"\n\n";
             procedimiento += "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(res, "ab")+"\n\n";
-            procedimiento += "3.-Área = ";
+            if(operacion == 'a'){
+                procedimiento += "3.-Área = 1/2 * ";
+            }else{
+                procedimiento += "3.-Área = ";
+            }
         }
+        //Ángulo entre vectores
         if(operacion == 'd'){
-            //ángulo entre vectores
             procedimiento += "1.-Producto escalar\n";
             String procNumerador =  procedimientoPE(v2, res, '*');
             String numerador =  procedimientoPE(res)+"\n";

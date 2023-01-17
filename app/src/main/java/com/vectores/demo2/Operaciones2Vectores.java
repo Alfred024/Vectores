@@ -174,14 +174,14 @@ public class Operaciones2Vectores extends AppCompatActivity {
             res = v1.productoVectorial(v2);
         }
         if(operacion.equals("Área sobre vectores")){
-            signoOperacion = 'a';
             res = v1.productoVectorial(v2);
-            /*if(idButton == 2131231226){
+            if(idButton == 2131231226){
+                signoOperacion = 'A';
                 areaEntreVectores(v1, v2);
             }else{
+                signoOperacion = 'a';
                 areaEntreVectores(v1, v2);
-            }*/
-
+            }
         }
         if(operacion.equals("Ángulo entre vectores")){
             signoOperacion = 'd';
