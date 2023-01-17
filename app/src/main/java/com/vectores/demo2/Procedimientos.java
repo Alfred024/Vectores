@@ -22,9 +22,6 @@ public class Procedimientos {
         if(operacion == 'm'){
             procedimiento+= procedimeintoMagnitudVecs(v2, res, operacion);
         }
-
-
-        //Los dos de acá requieren trabajar con doubles
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'a'){
             //área de un paralelogramo entre vectores, para calcular el área de un triángulo se divide entre 2
@@ -34,22 +31,18 @@ public class Procedimientos {
         }
         if(operacion == 'd'){
             //ángulo entre vectores
-            /*
-            * 1.- Producto escalar de A * B (Numerador)
-            * 2.- Magnitud A * Magnitud B (Denominador)
-            * 3.- Se dividen
-            * 4.-
-            * */
-            procedimiento += "Producto escalar\n";
+            procedimiento += "1.-Producto escalar\n";
             String procNumerador =  procedimientoPE(v2, res, '*');
-            String numerador =  procedimientoPE(res);
-            String procDenominador = procedimeintoMagnitudVector(vectorA, "a")+"\n";
+            String numerador =  procedimientoPE(res)+"\n";
+
+            String procDenominador = "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(vectorA, "a")+"\n";
             procDenominador += procedimeintoMagnitudVector(v2, "b");
             String denominador = "("+denominadorAoB(vectorA)+"*"+denominadorAoB(v2)+")";
 
             procedimiento += procNumerador+numerador+"\n";
             procedimiento += procDenominador;
-            procedimiento += "\n"+numerador+"/"+denominador;
+            procedimiento += "\n\n3.-Ángulo entre vectores\n";
+            procedimiento += "cos α = "+numerador+"/"+denominador;
         }
 
         return procedimiento;
