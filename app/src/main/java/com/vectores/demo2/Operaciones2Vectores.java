@@ -121,10 +121,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
             brRadianes.setVisibility(View.VISIBLE);
             if(brGrados.isChecked()){
                 idButton=(int)brGrados.getId();
-                anguloEntreVectores(vector1,vector2,brGrados.getId());
+                anguloEntreVectores(vector1,vector2,idButton);
             }
             if(brRadianes.isChecked()){
-                anguloEntreVectores(vector1,vector2,brRadianes.getId());
+                anguloEntreVectores(vector1,vector2,idButton);
             }
         }
 
@@ -167,13 +167,17 @@ public class Operaciones2Vectores extends AppCompatActivity {
         if(operacion.equals("Ángulo entre vectores")){
             signoOperacion = 'd';
             res = v1.multiVector(v2);
-            /*if(brGrados.isChecked()){
-                signoOperacion = 'd';
-                res = v1.multiVector(v2);
+            if(idButton == 2131231226){
+                //Resultado final en Radianes
+                procedimiento2 += "\nRadianes: ";
+                procedimiento2 += v1.anguloEntreVectores(v2, idButton)+"";
+            }else{
+                //Resultado final en Grados
+                procedimiento2 += "\nGrados: acos(";
+                procedimiento2 += v1.anguloEntreVectores(v2, 2131231226)+") = ";
+                procedimiento2 += v1.anguloEntreVectores(v2, 2);
             }
-            if(brRadianes.isChecked()){
 
-            }*/
         }
         //procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
         procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion)+procedimiento2;

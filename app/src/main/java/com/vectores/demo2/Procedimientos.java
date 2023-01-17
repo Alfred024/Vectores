@@ -40,12 +40,12 @@ public class Procedimientos {
             * 3.- Se dividen
             * 4.-
             * */
-
+            procedimiento += "Producto escalar\n";
             String procNumerador =  procedimientoPE(v2, res, '*');
             String numerador =  procedimientoPE(res);
             String procDenominador = procedimeintoMagnitudVector(vectorA, "a")+"\n";
             procDenominador += procedimeintoMagnitudVector(v2, "b");
-            String denominador = denominadorAoB(vectorA)+denominadorAoB(v2);
+            String denominador = "("+denominadorAoB(vectorA)+"*"+denominadorAoB(v2)+")";
 
             procedimiento += procNumerador+numerador+"\n";
             procedimiento += procDenominador;
@@ -72,8 +72,8 @@ public class Procedimientos {
         String procedimiento="";
         procedimiento+= "("+vectorA.i+operacion+v2.i+")+";
         procedimiento+= "("+vectorA.j+operacion+v2.j+")+";
-        procedimiento+= "("+vectorA.k+operacion+v2.k+")=";
-        procedimiento+= res.i+"+"+res.j+"+"+res.k+"=";
+        procedimiento+= "("+vectorA.k+operacion+v2.k+") = ";
+        procedimiento+= res.i+"+"+res.j+"+"+res.k+" = ";
         return procedimiento;
     }
     String procedimientoPE(Vector res){
@@ -162,11 +162,11 @@ public class Procedimientos {
     String procedimeintoMagnitudVector(Vector vectorX, String vectorAoB){
         String procedimiento= "|"+vectorAoB+"|= ";
         procedimiento+= "√("+ vectorX.i + "²" + " + " + vectorX.j + "²" + " + " + vectorX.k + "²" +")";
-        procedimiento+="= "+vectorX.magnitudVector()+"";
+        procedimiento+="= "+redondeo2decimales(vectorX.magnitudVector())+"";
         return procedimiento;
     }
     String denominadorAoB(Vector vectorX){
-        return vectorX.magnitudVector()+"";
+        return redondeo2decimales(vectorX.magnitudVector())+"";
     }
 
     //Área de paralelogramo dado 2 vectores
@@ -176,4 +176,7 @@ public class Procedimientos {
         return procedimiento;
     }
 
+    double redondeo2decimales(double num){
+        return Math.round(num*100.0)/100.0;
+    }
 }

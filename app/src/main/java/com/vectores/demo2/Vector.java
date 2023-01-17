@@ -66,15 +66,20 @@ public class Vector {
         Vector aux = Vector.this.multiVector(v2);
         double numerador = aux.i+aux.j+aux.k;
         double denominador = Vector.this.magnitudVector()*v2.magnitudVector();
-        double res = (Math.acos(numerador/denominador));
+        double res = (numerador/denominador);
+        //(Math.acos(numerador/denominador))
         if(idRadioButton == 2131231226){
-            return res;
+            return redondeo2decimales(res);
         }else{
-            return res*57.3;
+            //Este resultado lo da mal
+            return redondeo2decimales(Math.acos(res));
         }
     }
 
     String showRes(Vector vectorResultante){
         return "< "+vectorResultante.i+"i, "+vectorResultante.j+"j, "+vectorResultante.k+"k >";
+    }
+    double redondeo2decimales(double num){
+        return Math.round(num*100.0)/100.0;
     }
 }
