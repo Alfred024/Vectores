@@ -40,11 +40,13 @@ public class Operaciones2Vectores extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar",
+        String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar","Calcular vector por 2 puntos",
                 "Magnitud","Producto vectorial","Área sobre vectores","Ángulo entre vectores"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
+        //adapter.notifyDataSetChanged();
     }
+
 
     int idButton = 0;
     public void changeActivity(View view){
@@ -104,6 +106,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Multiplicación de vectores A*B");
             multiplicaion(vector1, vector2);
         }
+        if(operacion.equals("Calcular vector por 2 puntos")){
+            operationView.setText("Calcular vector por 2 puntos");
+            vectorEntre2Puntos(vector1, vector2);
+        }
         if(operacion.equals("Magnitud")){
             operationView.setText("Magnitud de vector AB");
             magnitud(vector1, vector2);
@@ -141,7 +147,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
                 anguloEntreVectores(vector1,vector2,idButton);
             }
         }
-
     }
 
     public String getProcedimientoView(Vector v1, Vector v2, String operacion){
@@ -162,6 +167,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
         if(operacion.equals("Multiplicación")){
             signoOperacion = '·';
             res = v1.multiVector(v2);
+        }
+        if(operacion.equals("Calcular vector por 2 puntos")){
+            signoOperacion = '2';
+            res = v1.vectorCon2Puntos(v2);
         }
         if(operacion.equals("Magnitud")){
             signoOperacion = '-';
@@ -218,6 +227,12 @@ public class Operaciones2Vectores extends AppCompatActivity {
         Vector resultante = v1.multiVector(v2);
         String resMulti = (resultante.i+resultante.j+resultante.k)+"";
         resView.setText(resMulti);
+    }
+    public void vectorEntre2Puntos(Vector v1, Vector v2){
+        Vector resultante = v1.vectorCon2Puntos(v2);
+        //String resMulti = (resultante.i+resultante.j+resultante.k)+"";
+        String resDif = v1.showRes(resultante);
+        resView.setText(resDif);
     }
     public void magnitud(Vector v1, Vector v2){
         double magnitud=0;

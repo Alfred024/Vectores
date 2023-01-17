@@ -39,6 +39,14 @@ public class Vector {
         return res;
     }
 
+    Vector vectorCon2Puntos(Vector v2){
+        Vector res = new Vector(0,0,0);
+        res.i = v2.i - Vector.this.i;
+        res.j = v2.j - Vector.this.j;
+        res.k = v2.k - Vector.this.k;
+        return res;
+    }
+
     double magnitudVector(){
         Vector vector = new Vector(i,j,k);
         if(vector.size == 2){

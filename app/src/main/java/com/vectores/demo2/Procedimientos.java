@@ -22,39 +22,24 @@ public class Procedimientos {
         if(operacion == 'm'){
             procedimiento+= procedimeintoMagnitudVecs(v2, res, operacion);
         }
+        //Vector entre 2 puntos
+        if(operacion == '2'){
+            procedimiento+= procedimientoEntre2Puntos(v2, res, operacion);
+        }
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'A' || operacion == 'a'){
             //a = área de un parelelogramo, A = área de un triángulo
-            procedimiento += "1.-Producto vectorial\n";
-            procedimiento+= procedimeintoProductoVec(v2, res, operacion)+"\n\n";
-            procedimiento += "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(res, "ab")+"\n\n";
-            if(operacion == 'A'){
-                procedimiento += "3.-Área = 1/2 * ";
-            }else{
-                procedimiento += "3.-Área = ";
-            }
+            procedimiento += procedimientoAreaVectores(v2, res, operacion);
         }
         //Ángulo entre vectores
         if(operacion == 'd'){
-            procedimiento += "1.-Producto escalar\n";
-            String procNumerador =  procedimientoPE(v2, res, '*');
-            String numerador =  procedimientoPE(res)+"\n";
-
-            String procDenominador = "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(vectorA, "a")+"\n";
-            procDenominador += procedimeintoMagnitudVector(v2, "b");
-            String denominador = "("+denominadorAoB(vectorA)+"*"+denominadorAoB(v2)+")";
-
-            procedimiento += procNumerador+numerador+"\n";
-            procedimiento += procDenominador;
-            procedimiento += "\n\n3.-Ángulo entre vectores\n";
-            procedimiento += "cos α = "+numerador+"/"+denominador;
+            procedimiento += procedimientoAnguloEntreVectores(v2, res, operacion);
         }
 
         return procedimiento;
     }
 
     //Obtener procedimientos
-
     //Suma, Resta y Multiplicación
     String procedimientoSRM(Vector v2, Vector res, char operacion){
         String procedimiento="";
@@ -167,13 +152,47 @@ public class Procedimientos {
         return redondeo2decimales(vectorX.magnitudVector())+"";
     }
 
-    //Área de paralelogramo dado 2 vectores
-    String procedimientoAreaVectores(Vector v2, Vector res, char operacion){
-        String procedimiento = "";
-
+    //Vector entre 2 puntos
+    String procedimientoEntre2Puntos(Vector v2, Vector res, char operacion){
+        String procedimiento="";
+        procedimiento+= "("+v2.i+"i - "+vectorA.i+"i), (";
+        procedimiento+= v2.j+"j - "+ vectorA.j+"j), (";
+        procedimiento+= v2.k+"k - "+vectorA.k+"k) = ";
+        procedimiento+="<"+res.i+"i ,"+res.j+"j ,"+res.k+"k >\n";
         return procedimiento;
     }
 
+    //Área de paralelogramo dado 2 vectores
+    String procedimientoAreaVectores(Vector v2, Vector res, char operacion){
+        String procedimiento = "";
+        procedimiento += "1.-Producto vectorial\n";
+        procedimiento+= procedimeintoProductoVec(v2, res, operacion)+"\n\n";
+        procedimiento += "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(res, "ab")+"\n\n";
+        if(operacion == 'A'){
+            procedimiento += "3.-Área = 1/2 * ";
+        }else{
+            procedimiento += "3.-Área = ";
+        }
+        return procedimiento;
+    }
+
+    //Ángulo entre vectores
+    String procedimientoAnguloEntreVectores(Vector v2, Vector res, char operacion){
+        String procedimiento = "";
+        procedimiento += "1.-Producto escalar\n";
+        String procNumerador =  procedimientoPE(v2, res, '*');
+        String numerador =  procedimientoPE(res)+"\n";
+
+        String procDenominador = "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(vectorA, "a")+"\n";
+        procDenominador += procedimeintoMagnitudVector(v2, "b");
+        String denominador = "("+denominadorAoB(vectorA)+"*"+denominadorAoB(v2)+")";
+
+        procedimiento += procNumerador+numerador+"\n";
+        procedimiento += procDenominador;
+        procedimiento += "\n\n3.-Ángulo entre vectores\n";
+        procedimiento += "cos α = "+numerador+"/"+denominador;
+        return procedimiento;
+    }
     double redondeo2decimales(double num){
         return Math.round(num*100.0)/100.0;
     }
