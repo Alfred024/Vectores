@@ -24,11 +24,11 @@ public class Procedimientos {
         }
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'A' || operacion == 'a'){
-            //A = área de un parelelogramo, a = área de un triángulo
+            //a = área de un parelelogramo, A = área de un triángulo
             procedimiento += "1.-Producto vectorial\n";
             procedimiento+= procedimeintoProductoVec(v2, res, operacion)+"\n\n";
             procedimiento += "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(res, "ab")+"\n\n";
-            if(operacion == 'a'){
+            if(operacion == 'A'){
                 procedimiento += "3.-Área = 1/2 * ";
             }else{
                 procedimiento += "3.-Área = ";

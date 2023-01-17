@@ -182,6 +182,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
                 signoOperacion = 'a';
                 areaEntreVectores(v1, v2);
             }
+            procedimiento2 += v1.areaEntreVectores(v2, 0)+"";
         }
         if(operacion.equals("Ángulo entre vectores")){
             signoOperacion = 'd';
