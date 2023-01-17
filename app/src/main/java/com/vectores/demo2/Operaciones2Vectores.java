@@ -113,10 +113,17 @@ public class Operaciones2Vectores extends AppCompatActivity {
         }
         if(operacion.equals("Área sobre vectores")){
             operationView.setText("Área sobre vectores A B");
+            brRadianes.setText("Paralelogramo");
+            brGrados.setText("Triángulo");
+            brGrados.setVisibility(View.VISIBLE);
+            brRadianes.setVisibility(View.VISIBLE);
+            idButton=(int)brGrados.getId();
             areaEntreVectores(vector1, vector2);
         }
         if(operacion.equals("Ángulo entre vectores")){
             operationView.setText("Ángulo entre vectores A B");
+            brRadianes.setText("Radianes");
+            brGrados.setText("Grados");
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
             if(brGrados.isChecked()){
@@ -162,7 +169,13 @@ public class Operaciones2Vectores extends AppCompatActivity {
         }
         if(operacion.equals("Área sobre vectores A B")){
             signoOperacion = 'a';
+            if(idButton == 2131231226){
+                //Resultado de área Triángulo
 
+            }else{
+                //Resultado de área Paralelogramo
+
+            }
         }
         if(operacion.equals("Ángulo entre vectores")){
             signoOperacion = 'd';
@@ -223,7 +236,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
     //Calcula el área de un paralelogramo, para calcular el área de un triángulo hay que dividir el resultado entre 2
     public void areaEntreVectores(Vector v1, Vector v2){
         double area = 0;
-        area = v1.areaParalelogramo(v2);
+        area = v1.areaEntreVectores(v2, idButton);
         String resText = area+"";
         resView.setText(resText);
     }

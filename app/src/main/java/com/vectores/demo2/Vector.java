@@ -56,10 +56,15 @@ public class Vector {
         return  res;
     }
 
-    double areaParalelogramo(Vector v2){
+    double areaEntreVectores(Vector v2, int idRadioButton){
         Vector vectorProducto = productoVectorial(v2);
         double areaVector = vectorProducto.magnitudVector();
-        return areaVector;
+        if(idRadioButton == 2131231226){
+            return redondeo2decimales(areaVector/2);
+        }else{
+            //Este
+            return redondeo2decimales(areaVector);
+        }
     }
 
     double anguloEntreVectores(Vector v2,int idRadioButton){
