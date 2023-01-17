@@ -47,7 +47,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
     }
 
     int idButton = 0;
-
     public void changeActivity(View view){
         String operacion = spinner1.getSelectedItem().toString();
         Intent nextActivity = new Intent(this, proceduresActivity.class);
@@ -86,6 +85,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
         return x.getText().toString().isEmpty() && y.getText().toString().isEmpty() && z.getText().toString().isEmpty();
     }
 
+    //Problema: Los RadioButtons no desaparecen, además que se quedan pulsados y después de hacer click una vez ya no deja seleccionar
+    //otro botón
     public void calcularButton(View view){
         Vector vector1 = getVectorA();
         Vector vector2 = getVectorB();
@@ -124,9 +125,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
             if(brRadianes.isChecked()){
                 areaEntreVectores(vector1, vector2);
             }
-
-            brRadianes.setVisibility(View.INVISIBLE);
-            brGrados.setVisibility(View.INVISIBLE);
         }
         if(operacion.equals("Ángulo entre vectores")){
             operationView.setText("Ángulo entre vectores A B");
@@ -134,6 +132,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             brGrados.setText("Grados");
             brGrados.setVisibility(View.VISIBLE);
             brRadianes.setVisibility(View.VISIBLE);
+
             if(brGrados.isChecked()){
                 idButton=(int)brGrados.getId();
                 anguloEntreVectores(vector1,vector2,idButton);
@@ -141,9 +140,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
             if(brRadianes.isChecked()){
                 anguloEntreVectores(vector1,vector2,idButton);
             }
-
-            brRadianes.setVisibility(View.INVISIBLE);
-            brGrados.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -153,7 +149,6 @@ public class Operaciones2Vectores extends AppCompatActivity {
         char signoOperacion = ' ', signoOperacion2;
         String procedimiento, procedimiento2="";
         Vector res = null;
-
 
         double resUnidad;
         if(operacion.equals("Suma")){
@@ -178,14 +173,12 @@ public class Operaciones2Vectores extends AppCompatActivity {
             signoOperacion = 'p';
             res = v1.productoVectorial(v2);
         }
-        if(operacion.equals("Área sobre vectores A B")){
+        if(operacion.equals("Área sobre vectores")){
             signoOperacion = 'a';
             if(idButton == 2131231226){
-                //Resultado de área Triángulo
-
+                areaEntreVectores(v1, v2);
             }else{
-                //Resultado de área Paralelogramo
-
+                areaEntreVectores(v1, v2);
             }
         }
         if(operacion.equals("Ángulo entre vectores")){
@@ -201,9 +194,8 @@ public class Operaciones2Vectores extends AppCompatActivity {
                 procedimiento2 += v1.anguloEntreVectores(v2, 2131231226)+") = ";
                 procedimiento2 += v1.anguloEntreVectores(v2, 2);
             }
-
         }
-        //procedimiento = v1.getProcedimiento(v2, res, signoOperacion) + procedimiento2;
+
         procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion)+procedimiento2;
         return procedimiento;
     }
@@ -244,16 +236,23 @@ public class Operaciones2Vectores extends AppCompatActivity {
         String resResta = v1.showRes(resultante);
         resView.setText(resResta);
     }
-    //Calcula el área de un paralelogramo, para calcular el área de un triángulo hay que dividir el resultado entre 2
     public void areaEntreVectores(Vector v1, Vector v2){
         double area = 0;
         area = v1.areaEntreVectores(v2, idButton);
         String resText = area+"";
         resView.setText(resText);
+        brRadianes.setVisibility(View.INVISIBLE);
+        brGrados.setVisibility(View.INVISIBLE);
+        brGrados.setChecked(false);
+        brRadianes.setChecked(false);
     }
     public void anguloEntreVectores(Vector v1, Vector v2, int idOfButton){
         double angulo = v1.anguloEntreVectores(v2, idOfButton);
         String resText = angulo+"";
         resView.setText(resText);
+        brRadianes.setVisibility(View.INVISIBLE);
+        brGrados.setVisibility(View.INVISIBLE);
+        brGrados.setChecked(false);
+        brRadianes.setChecked(false);
     }
 }

@@ -62,7 +62,6 @@ public class Vector {
         if(idRadioButton == 2131231226){
             return redondeo2decimales(areaVector/2);
         }else{
-            //Este
             return redondeo2decimales(areaVector);
         }
     }
