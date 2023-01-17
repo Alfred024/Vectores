@@ -24,10 +24,10 @@ public class Procedimientos {
         }
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'a'){
-            //área de un paralelogramo entre vectores, para calcular el área de un triángulo se divide entre 2
-            procedimiento += this.getProcedimiento(v2, res, operacion)+"\n";
-            operacion = 'm';
-            procedimiento += this.getProcedimiento(v2, res, operacion);
+            procedimiento += "1.-Producto vectorial\n";
+            procedimiento+= procedimeintoProductoVec(v2, res, operacion)+"\n\n";
+            procedimiento += "2.-Módulo de vectores\n"+procedimeintoMagnitudVector(res, "ab")+"\n\n";
+            procedimiento += "3.-Área = ";
         }
         if(operacion == 'd'){
             //ángulo entre vectores

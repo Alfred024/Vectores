@@ -48,6 +48,7 @@ public class Vector {
         }
     }
 
+    //Aquí es más menos más cuando hav¿cemos la matriz
     Vector productoVectorial(Vector v2){
         Vector res = new Vector(0,0,0);
         res.i = (Vector.this.j*v2.k) - (Vector.this.k*v2.j);
