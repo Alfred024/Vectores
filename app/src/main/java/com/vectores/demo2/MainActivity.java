@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String operacion = spinnerMain.getSelectedItem().toString();
         Intent nextActivity = null;
         if(operacion == "Operaciones con 1 vector"){
-            nextActivity = new Intent(this, Operaciones2Vectores.class);
+            nextActivity = new Intent(this, Operaciones1Vector.class);
         }
         if(operacion == "Operaciones con 2 vectores"){
             nextActivity = new Intent(this, Operaciones2Vectores.class);

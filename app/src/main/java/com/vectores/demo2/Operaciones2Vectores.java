@@ -37,7 +37,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
         z2 = (EditText)findViewById(R.id.ejeZ2);
 
         resView = (TextView)findViewById(R.id.txt_res);
-        operationView = (TextView)findViewById(R.id.operationLabel);
+        operationView = (TextView)findViewById(R.id.operationLabelA);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
         String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar","Calcular vector por 2 puntos","Proyección de vector A sobre B",
