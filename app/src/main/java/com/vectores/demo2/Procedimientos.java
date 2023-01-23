@@ -8,6 +8,19 @@ public class Procedimientos {
         vectorA = vector;
     }
 
+    //Procedimientos para operaciones con 1 vector
+    String getProcedimiento(Vector res, char operacion){
+        String procedimiento = "";
+        //Suma, resta, multiplicaión
+        if(operacion == '*'){
+            procedimiento+= procedimeintoMagnitudVector(vectorA,  "A");
+        }
+
+
+        return procedimiento;
+    }
+
+    //Procedimientos para operaciones con 2 vectores
     String getProcedimiento(Vector v2, Vector res, char operacion){
         String procedimiento = "";
         //Suma, resta, multiplicaión

@@ -58,9 +58,11 @@ public class Vector {
     double magnitudVector(){
         Vector vector = new Vector(i,j,k);
         if(vector.size == 2){
-            return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2));
+            double res = Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2));
+            return redondeo2decimales(res);
         }else{
-            return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2) + Math.pow(vector.k,2));
+            double res = Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2) + Math.pow(vector.k,2));
+            return redondeo2decimales(res);
         }
     }
 

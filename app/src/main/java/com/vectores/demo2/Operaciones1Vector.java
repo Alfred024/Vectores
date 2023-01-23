@@ -3,6 +3,7 @@ package com.vectores.demo2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,13 @@ public class Operaciones1Vector extends AppCompatActivity {
         spinner1.setAdapter(adapter);
     }
 
+    public void changeActivity(View view){
+        String operacion = spinner1.getSelectedItem().toString();
+        Intent nextActivity = new Intent(this, proceduresActivity.class);
+        nextActivity.putExtra("key",getProcedimientoView(getVector(), operacion));
+        startActivity(nextActivity);
+    }
+
     Vector getVector(){
         String xA = x.getText().toString();
         if(xA.isEmpty()){ xA = "0";}
@@ -60,53 +68,55 @@ public class Operaciones1Vector extends AppCompatActivity {
 
         if(operacion.equals("Longitud vector")){
             operationView.setText("Longitud (módulo) de vector");
+            magnitud(vector1);
         }
         if(operacion.equals("Cosenos directores")){
             operationView.setText("Cosenos directores");
-
+            cosenosDirs(vector1);
         }
         if(operacion.equals("Multiplicación de vector por x")){
             operationView.setText("Multiplicación de vector por x");
+            multiplicaion(vector1);
         }
 
     }
 
-    public String getProcedimientoView(Vector v1, Vector v2, String operacion){
+    public String getProcedimientoView(Vector v1, String operacion){
         Procedimientos objProcedimientos = new Procedimientos(v1);
         char signoOperacion = ' ', signoOperacion2;
-        String procedimiento, procedimiento2="";
+        String procedimiento="", procedimiento2="";
         Vector res = null;
 
         double resUnidad;
         if(operacion.equals("Longitud vector")){
             signoOperacion = '*';
-            res = v1.sumaVectores(v2);
+            //res = v1.sumaVectores(v2);
         }
         if(operacion.equals("Cosenos directores")){
             signoOperacion = '-';
-            res = v1.restaVectores(v2);
+            //res = v1.restaVectores(v2);
         }
         if(operacion.equals("Multiplicación de vector por x")){
             signoOperacion = '·';
-            res = v1.multiVector(v2);
+            //res = v1.multiVector(v2);
         }
-        procedimiento = objProcedimientos.getProcedimiento(v2, res, signoOperacion)+procedimiento2;
+        procedimiento = objProcedimientos.getProcedimiento(v1, signoOperacion)+procedimiento2;
         return procedimiento;
     }
 
-    public void magnitud(Vector v1, Vector v2){
-        Vector resultante = v1.sumaVectores(v2);
-        String resSuma = v1.showRes(resultante);
-        resView.setText(resSuma);
+    public void magnitud(Vector v1){
+        double resultante = v1.magnitudVector();
+        //String resSuma = v1.showRes(resultante);
+        resView.setText(resultante+"");
     }
-    public void cosenosDirs(Vector v1, Vector v2){
-        Vector resultante = v1.restaVectores(v2);
+    public void cosenosDirs(Vector v1){
+        /*Vector resultante = v1.restaVectores(v2);
         String resResta = v1.showRes(resultante);
-        resView.setText(resResta);
+        resView.setText(resResta);*/
     }
-    public void multiplicaion(Vector v1, Vector v2){
-        Vector resultante = v1.multiVector(v2);
+    public void multiplicaion(Vector v1){
+        /*Vector resultante = v1.multiVector(v2);
         String resMulti = "";
-        resView.setText(resMulti);
+        resView.setText(resMulti);*/
     }
 }
