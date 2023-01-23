@@ -26,6 +26,17 @@ public class Procedimientos {
         if(operacion == '2'){
             procedimiento+= procedimientoEntre2Puntos(v2, res, operacion);
         }
+        if(operacion == '>'){
+            procedimiento += "1.-Producto escalar\n";
+            procedimiento+= procedimientoSRM(v2, res, '·');
+            String numerador =  procedimientoPE(res)+"\n";
+            procedimiento+= procedimientoPE(res)+"\n\n";
+            procedimiento+= "2.-Módulo de vectores\n";
+            procedimiento+=procedimeintoMagnitudVector(v2, "B")+"\n\n";
+            String denominador = denominadorAoB(v2);
+            procedimiento+= "Proj>BA = "+numerador+"/"+denominador;
+            procedimiento+=" = "+vectorA.proyeccionVectorAsobreB(v2)+"";
+        }
         //Área del paralelogramo formado entre 2 vectores
         if(operacion == 'A' || operacion == 'a'){
             //a = área de un parelelogramo, A = área de un triángulo

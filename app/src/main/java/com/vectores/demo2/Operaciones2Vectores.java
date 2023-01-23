@@ -176,6 +176,11 @@ public class Operaciones2Vectores extends AppCompatActivity {
             signoOperacion = '2';
             res = v1.vectorCon2Puntos(v2);
         }
+        if(operacion.equals("Proyección de vector A sobre B")){
+            signoOperacion = '>';
+            res = v1.multiVector(v2);
+
+        }
         if(operacion.equals("Magnitud")){
             signoOperacion = '-';
             res = v1.restaVectores(v2);
