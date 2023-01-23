@@ -3,7 +3,18 @@
     <string name="App_Title">Vectores App Demo</string>
     <string name="changeActivityButton">Cambiar a pestaña</string>
     <string name="spinner_Pestañas">Seleccione</string>
-    
+
+    /*Activity Operaciones con 1 vector*/
+    <string name="textViewMain">Ingrese el valor de los componentes</string>
+    <string name="vector">Vector</string>
+    <string name="y">j</string>
+    <string name="z">k</string>
+    <string name="x">i</string>
+    <string name="calcular1">Calcular</string>
+    <string name="operacionLabel">Elija la operación a realizar</string>
+    <string name="txt_res1">Resultado</string>
+    <string name="changeActivity">Ver procedimiento</string>
+
     /*Activity Operaciones con 2 vectores*/
     <string name="app_name">demo2</string>
     <string name="j">j</string>
