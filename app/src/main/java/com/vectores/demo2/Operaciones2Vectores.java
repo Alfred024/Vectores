@@ -40,7 +40,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
         operationView = (TextView)findViewById(R.id.operationLabel);
 
         spinner1 = (Spinner)findViewById(R.id.mainSpinner);
-        String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar","Calcular vector por 2 puntos",
+        String operaciones[] = {"Suma", "Resta", "Multiplicación/Producto escalar","Calcular vector por 2 puntos","Proyección de vector A sobre B",
                 "Magnitud","Producto vectorial","Área sobre vectores","Ángulo entre vectores"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item_operaciones, operaciones);
         spinner1.setAdapter(adapter);
@@ -110,6 +110,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
             operationView.setText("Calcular vector por 2 puntos");
             vectorEntre2Puntos(vector1, vector2);
         }
+        if(operacion.equals("Proyección de vector A sobre B")){
+            operationView.setText("Proyección de vector A sobre B");
+            proyVectorAsobreB(vector1, vector2);
+        }
         if(operacion.equals("Magnitud")){
             operationView.setText("Magnitud de vector AB");
             magnitud(vector1, vector2);
@@ -164,7 +168,7 @@ public class Operaciones2Vectores extends AppCompatActivity {
             signoOperacion = '-';
             res = v1.restaVectores(v2);
         }
-        if(operacion.equals("Multiplicación")){
+        if(operacion.equals("Multiplicación/Producto escalar")){
             signoOperacion = '·';
             res = v1.multiVector(v2);
         }
@@ -233,6 +237,10 @@ public class Operaciones2Vectores extends AppCompatActivity {
         //String resMulti = (resultante.i+resultante.j+resultante.k)+"";
         String resDif = v1.showRes(resultante);
         resView.setText(resDif);
+    }
+    public void proyVectorAsobreB(Vector v1, Vector v2){
+        double res = v1.proyeccionVectorAsobreB(v2);
+        resView.setText(res+"");
     }
     public void magnitud(Vector v1, Vector v2){
         double magnitud=0;

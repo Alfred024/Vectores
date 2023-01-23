@@ -47,6 +47,14 @@ public class Vector {
         return res;
     }
 
+    double proyeccionVectorAsobreB(Vector v2){
+        Vector res = this.multiVector(v2);
+        double prodEsc = res.i+res.j+res.k;
+        double magnitudVec2 = v2.magnitudVector();
+        double proyRes = prodEsc/magnitudVec2;
+        return  redondeo2decimales(proyRes);
+    }
+
     double magnitudVector(){
         Vector vector = new Vector(i,j,k);
         if(vector.size == 2){
@@ -54,6 +62,10 @@ public class Vector {
         }else{
             return Math.sqrt(Math.pow(vector.i,2) + Math.pow(vector.j,2) + Math.pow(vector.k,2));
         }
+    }
+
+    double productoEscalar(Vector v2){
+        return (this.i*v2.i)+(this.j*v2.j)+(this.k*v2.k);
     }
 
     Vector productoVectorial(Vector v2){
